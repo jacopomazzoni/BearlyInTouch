@@ -1,0 +1,6 @@
+framework module Pods_BearlyInTouchUITests {
+  umbrella header "Pods-BearlyInTouchUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

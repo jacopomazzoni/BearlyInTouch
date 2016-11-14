@@ -1,0 +1,709 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		297893A4734FF96E6286AA6F /* Pods_BearlyInTouchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F30B784095C4B7C58FFB56A /* Pods_BearlyInTouchUITests.framework */; };
+		4ACF056661C07D4378B2182A /* Pods_BearlyInTouchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6148E8249E277737DC71B19E /* Pods_BearlyInTouchTests.framework */; };
+		BAB3F11C660CF12BCC5188EC /* Pods_BearlyInTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35699AEFFBCA78588F4D6900 /* Pods_BearlyInTouch.framework */; };
+		BF5B99501DDA3400000F3416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B994F1DDA3400000F3416 /* AppDelegate.swift */; };
+		BF5B99521DDA3400000F3416 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B99511DDA3400000F3416 /* ViewController.swift */; };
+		BF5B99551DDA3400000F3416 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5B99531DDA3400000F3416 /* Main.storyboard */; };
+		BF5B99571DDA3400000F3416 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5B99561DDA3400000F3416 /* Assets.xcassets */; };
+		BF5B995A1DDA3400000F3416 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5B99581DDA3400000F3416 /* LaunchScreen.storyboard */; };
+		BF5B99651DDA3400000F3416 /* BearlyInTouchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B99641DDA3400000F3416 /* BearlyInTouchTests.swift */; };
+		BF5B99701DDA3400000F3416 /* BearlyInTouchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B996F1DDA3400000F3416 /* BearlyInTouchUITests.swift */; };
+		BFE3A4791DDA3C7800925F5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFE3A4781DDA3C7800925F5C /* GoogleService-Info.plist */; };
+		BFE3A47A1DDA3C7800925F5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFE3A4781DDA3C7800925F5C /* GoogleService-Info.plist */; };
+		BFE3A47B1DDA3C7800925F5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFE3A4781DDA3C7800925F5C /* GoogleService-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BF5B99611DDA3400000F3416 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF5B99441DDA3400000F3416 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF5B994B1DDA3400000F3416;
+			remoteInfo = BearlyInTouch;
+		};
+		BF5B996C1DDA3400000F3416 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF5B99441DDA3400000F3416 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF5B994B1DDA3400000F3416;
+			remoteInfo = BearlyInTouch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		12DF7D940373C8DBA156EA00 /* Pods-BearlyInTouch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BearlyInTouch.release.xcconfig"; path = "Pods/Target Support Files/Pods-BearlyInTouch/Pods-BearlyInTouch.release.xcconfig"; sourceTree = "<group>"; };
+		165167580872C1C75DDB5855 /* Pods-BearlyInTouchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BearlyInTouchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BearlyInTouchTests/Pods-BearlyInTouchTests.debug.xcconfig"; sourceTree = "<group>"; };
+		35699AEFFBCA78588F4D6900 /* Pods_BearlyInTouch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BearlyInTouch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49D067EF09B89FDBEE6EF6E1 /* Pods-BearlyInTouchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BearlyInTouchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BearlyInTouchTests/Pods-BearlyInTouchTests.release.xcconfig"; sourceTree = "<group>"; };
+		6148E8249E277737DC71B19E /* Pods_BearlyInTouchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BearlyInTouchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F30B784095C4B7C58FFB56A /* Pods_BearlyInTouchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BearlyInTouchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		974E4750CC9F529C0065D074 /* Pods-BearlyInTouchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BearlyInTouchUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BearlyInTouchUITests/Pods-BearlyInTouchUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BF5B994C1DDA3400000F3416 /* BearlyInTouch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BearlyInTouch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF5B994F1DDA3400000F3416 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BF5B99511DDA3400000F3416 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BF5B99541DDA3400000F3416 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BF5B99561DDA3400000F3416 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF5B99591DDA3400000F3416 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BF5B995B1DDA3400000F3416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF5B99601DDA3400000F3416 /* BearlyInTouchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BearlyInTouchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF5B99641DDA3400000F3416 /* BearlyInTouchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearlyInTouchTests.swift; sourceTree = "<group>"; };
+		BF5B99661DDA3400000F3416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF5B996B1DDA3400000F3416 /* BearlyInTouchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BearlyInTouchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF5B996F1DDA3400000F3416 /* BearlyInTouchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearlyInTouchUITests.swift; sourceTree = "<group>"; };
+		BF5B99711DDA3400000F3416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFE3A4781DDA3C7800925F5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F46374BC07F229201C6D40CF /* Pods-BearlyInTouchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BearlyInTouchUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BearlyInTouchUITests/Pods-BearlyInTouchUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FACAC149AADE4956FC16436C /* Pods-BearlyInTouch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BearlyInTouch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BearlyInTouch/Pods-BearlyInTouch.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF5B99491DDA3400000F3416 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAB3F11C660CF12BCC5188EC /* Pods_BearlyInTouch.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF5B995D1DDA3400000F3416 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4ACF056661C07D4378B2182A /* Pods_BearlyInTouchTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF5B99681DDA3400000F3416 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				297893A4734FF96E6286AA6F /* Pods_BearlyInTouchUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		55A98087C4FB2A599C64F76B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				35699AEFFBCA78588F4D6900 /* Pods_BearlyInTouch.framework */,
+				6148E8249E277737DC71B19E /* Pods_BearlyInTouchTests.framework */,
+				7F30B784095C4B7C58FFB56A /* Pods_BearlyInTouchUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A45652804D41874A613320A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FACAC149AADE4956FC16436C /* Pods-BearlyInTouch.debug.xcconfig */,
+				12DF7D940373C8DBA156EA00 /* Pods-BearlyInTouch.release.xcconfig */,
+				165167580872C1C75DDB5855 /* Pods-BearlyInTouchTests.debug.xcconfig */,
+				49D067EF09B89FDBEE6EF6E1 /* Pods-BearlyInTouchTests.release.xcconfig */,
+				F46374BC07F229201C6D40CF /* Pods-BearlyInTouchUITests.debug.xcconfig */,
+				974E4750CC9F529C0065D074 /* Pods-BearlyInTouchUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BF5B99431DDA3400000F3416 = {
+			isa = PBXGroup;
+			children = (
+				BF5B994E1DDA3400000F3416 /* BearlyInTouch */,
+				BF5B99631DDA3400000F3416 /* BearlyInTouchTests */,
+				BF5B996E1DDA3400000F3416 /* BearlyInTouchUITests */,
+				BF5B994D1DDA3400000F3416 /* Products */,
+				7A45652804D41874A613320A /* Pods */,
+				55A98087C4FB2A599C64F76B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BF5B994D1DDA3400000F3416 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF5B994C1DDA3400000F3416 /* BearlyInTouch.app */,
+				BF5B99601DDA3400000F3416 /* BearlyInTouchTests.xctest */,
+				BF5B996B1DDA3400000F3416 /* BearlyInTouchUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF5B994E1DDA3400000F3416 /* BearlyInTouch */ = {
+			isa = PBXGroup;
+			children = (
+				BF5B994F1DDA3400000F3416 /* AppDelegate.swift */,
+				BF5B99511DDA3400000F3416 /* ViewController.swift */,
+				BF5B99531DDA3400000F3416 /* Main.storyboard */,
+				BF5B99561DDA3400000F3416 /* Assets.xcassets */,
+				BF5B99581DDA3400000F3416 /* LaunchScreen.storyboard */,
+				BFE3A4781DDA3C7800925F5C /* GoogleService-Info.plist */,
+				BF5B995B1DDA3400000F3416 /* Info.plist */,
+			);
+			path = BearlyInTouch;
+			sourceTree = "<group>";
+		};
+		BF5B99631DDA3400000F3416 /* BearlyInTouchTests */ = {
+			isa = PBXGroup;
+			children = (
+				BF5B99641DDA3400000F3416 /* BearlyInTouchTests.swift */,
+				BF5B99661DDA3400000F3416 /* Info.plist */,
+			);
+			path = BearlyInTouchTests;
+			sourceTree = "<group>";
+		};
+		BF5B996E1DDA3400000F3416 /* BearlyInTouchUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BF5B996F1DDA3400000F3416 /* BearlyInTouchUITests.swift */,
+				BF5B99711DDA3400000F3416 /* Info.plist */,
+			);
+			path = BearlyInTouchUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BF5B994B1DDA3400000F3416 /* BearlyInTouch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF5B99741DDA3400000F3416 /* Build configuration list for PBXNativeTarget "BearlyInTouch" */;
+			buildPhases = (
+				6FF066054D47039E96BFDFFC /* [CP] Check Pods Manifest.lock */,
+				BF5B99481DDA3400000F3416 /* Sources */,
+				BF5B99491DDA3400000F3416 /* Frameworks */,
+				BF5B994A1DDA3400000F3416 /* Resources */,
+				156886D3D3B1C575B11D8468 /* [CP] Embed Pods Frameworks */,
+				A9584253FBC121EA8610C704 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BearlyInTouch;
+			productName = BearlyInTouch;
+			productReference = BF5B994C1DDA3400000F3416 /* BearlyInTouch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BF5B995F1DDA3400000F3416 /* BearlyInTouchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF5B99771DDA3400000F3416 /* Build configuration list for PBXNativeTarget "BearlyInTouchTests" */;
+			buildPhases = (
+				65BBCC7CAA6A7E13270DDEE7 /* [CP] Check Pods Manifest.lock */,
+				BF5B995C1DDA3400000F3416 /* Sources */,
+				BF5B995D1DDA3400000F3416 /* Frameworks */,
+				BF5B995E1DDA3400000F3416 /* Resources */,
+				E68EEC5307DE7EB08A943094 /* [CP] Embed Pods Frameworks */,
+				1C499771BC7CB2D6D5E52C61 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF5B99621DDA3400000F3416 /* PBXTargetDependency */,
+			);
+			name = BearlyInTouchTests;
+			productName = BearlyInTouchTests;
+			productReference = BF5B99601DDA3400000F3416 /* BearlyInTouchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BF5B996A1DDA3400000F3416 /* BearlyInTouchUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF5B997A1DDA3400000F3416 /* Build configuration list for PBXNativeTarget "BearlyInTouchUITests" */;
+			buildPhases = (
+				3485B953DECADADE05C59B82 /* [CP] Check Pods Manifest.lock */,
+				BF5B99671DDA3400000F3416 /* Sources */,
+				BF5B99681DDA3400000F3416 /* Frameworks */,
+				BF5B99691DDA3400000F3416 /* Resources */,
+				52C8BC3202E7B273B4CE80E8 /* [CP] Embed Pods Frameworks */,
+				FBF3FFA19A1E28E4D88AF505 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF5B996D1DDA3400000F3416 /* PBXTargetDependency */,
+			);
+			name = BearlyInTouchUITests;
+			productName = BearlyInTouchUITests;
+			productReference = BF5B996B1DDA3400000F3416 /* BearlyInTouchUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF5B99441DDA3400000F3416 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = BearlyInTouch;
+				TargetAttributes = {
+					BF5B994B1DDA3400000F3416 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					BF5B995F1DDA3400000F3416 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = BF5B994B1DDA3400000F3416;
+					};
+					BF5B996A1DDA3400000F3416 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = BF5B994B1DDA3400000F3416;
+					};
+				};
+			};
+			buildConfigurationList = BF5B99471DDA3400000F3416 /* Build configuration list for PBXProject "BearlyInTouch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BF5B99431DDA3400000F3416;
+			productRefGroup = BF5B994D1DDA3400000F3416 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF5B994B1DDA3400000F3416 /* BearlyInTouch */,
+				BF5B995F1DDA3400000F3416 /* BearlyInTouchTests */,
+				BF5B996A1DDA3400000F3416 /* BearlyInTouchUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BF5B994A1DDA3400000F3416 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF5B995A1DDA3400000F3416 /* LaunchScreen.storyboard in Resources */,
+				BFE3A4791DDA3C7800925F5C /* GoogleService-Info.plist in Resources */,
+				BF5B99571DDA3400000F3416 /* Assets.xcassets in Resources */,
+				BF5B99551DDA3400000F3416 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF5B995E1DDA3400000F3416 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFE3A47A1DDA3C7800925F5C /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF5B99691DDA3400000F3416 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFE3A47B1DDA3C7800925F5C /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		156886D3D3B1C575B11D8468 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BearlyInTouch/Pods-BearlyInTouch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1C499771BC7CB2D6D5E52C61 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BearlyInTouchTests/Pods-BearlyInTouchTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3485B953DECADADE05C59B82 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		52C8BC3202E7B273B4CE80E8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BearlyInTouchUITests/Pods-BearlyInTouchUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65BBCC7CAA6A7E13270DDEE7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6FF066054D47039E96BFDFFC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A9584253FBC121EA8610C704 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BearlyInTouch/Pods-BearlyInTouch-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E68EEC5307DE7EB08A943094 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BearlyInTouchTests/Pods-BearlyInTouchTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBF3FFA19A1E28E4D88AF505 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BearlyInTouchUITests/Pods-BearlyInTouchUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF5B99481DDA3400000F3416 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF5B99521DDA3400000F3416 /* ViewController.swift in Sources */,
+				BF5B99501DDA3400000F3416 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF5B995C1DDA3400000F3416 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF5B99651DDA3400000F3416 /* BearlyInTouchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF5B99671DDA3400000F3416 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF5B99701DDA3400000F3416 /* BearlyInTouchUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BF5B99621DDA3400000F3416 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF5B994B1DDA3400000F3416 /* BearlyInTouch */;
+			targetProxy = BF5B99611DDA3400000F3416 /* PBXContainerItemProxy */;
+		};
+		BF5B996D1DDA3400000F3416 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF5B994B1DDA3400000F3416 /* BearlyInTouch */;
+			targetProxy = BF5B996C1DDA3400000F3416 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BF5B99531DDA3400000F3416 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF5B99541DDA3400000F3416 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BF5B99581DDA3400000F3416 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF5B99591DDA3400000F3416 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BF5B99721DDA3400000F3416 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BF5B99731DDA3400000F3416 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BF5B99751DDA3400000F3416 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FACAC149AADE4956FC16436C /* Pods-BearlyInTouch.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = BearlyInTouch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bearly.BearlyInTouch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BF5B99761DDA3400000F3416 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12DF7D940373C8DBA156EA00 /* Pods-BearlyInTouch.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = BearlyInTouch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bearly.BearlyInTouch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BF5B99781DDA3400000F3416 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 165167580872C1C75DDB5855 /* Pods-BearlyInTouchTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BearlyInTouchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bearly.BearlyInTouchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BearlyInTouch.app/BearlyInTouch";
+			};
+			name = Debug;
+		};
+		BF5B99791DDA3400000F3416 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49D067EF09B89FDBEE6EF6E1 /* Pods-BearlyInTouchTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BearlyInTouchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bearly.BearlyInTouchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BearlyInTouch.app/BearlyInTouch";
+			};
+			name = Release;
+		};
+		BF5B997B1DDA3400000F3416 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F46374BC07F229201C6D40CF /* Pods-BearlyInTouchUITests.debug.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = BearlyInTouchUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bearly.BearlyInTouchUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = BearlyInTouch;
+			};
+			name = Debug;
+		};
+		BF5B997C1DDA3400000F3416 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 974E4750CC9F529C0065D074 /* Pods-BearlyInTouchUITests.release.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = BearlyInTouchUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bearly.BearlyInTouchUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = BearlyInTouch;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF5B99471DDA3400000F3416 /* Build configuration list for PBXProject "BearlyInTouch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF5B99721DDA3400000F3416 /* Debug */,
+				BF5B99731DDA3400000F3416 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF5B99741DDA3400000F3416 /* Build configuration list for PBXNativeTarget "BearlyInTouch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF5B99751DDA3400000F3416 /* Debug */,
+				BF5B99761DDA3400000F3416 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF5B99771DDA3400000F3416 /* Build configuration list for PBXNativeTarget "BearlyInTouchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF5B99781DDA3400000F3416 /* Debug */,
+				BF5B99791DDA3400000F3416 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF5B997A1DDA3400000F3416 /* Build configuration list for PBXNativeTarget "BearlyInTouchUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF5B997B1DDA3400000F3416 /* Debug */,
+				BF5B997C1DDA3400000F3416 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BF5B99441DDA3400000F3416 /* Project object */;
+}
