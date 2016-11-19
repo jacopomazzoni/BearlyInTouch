@@ -17,13 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        FIRApp.configure()
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.makeKeyAndVisible()
         
         window?.rootViewController = UINavigationController(rootViewController: ViewController())
         // Override point for customization after application launch.
-        FIRApp.configure()
+       
         return true
     }
 

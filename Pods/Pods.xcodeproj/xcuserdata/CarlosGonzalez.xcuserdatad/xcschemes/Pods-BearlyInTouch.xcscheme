@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A1B86629B4F82A08E70D3A01074B23D9"
+               BlueprintIdentifier = "784AA218BE2E426C502A7386208ACC4E"
                BuildableName = "Pods_BearlyInTouch.framework"
                BlueprintName = "Pods-BearlyInTouch"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A1B86629B4F82A08E70D3A01074B23D9"
+            BlueprintIdentifier = "784AA218BE2E426C502A7386208ACC4E"
             BuildableName = "Pods_BearlyInTouch.framework"
             BlueprintName = "Pods-BearlyInTouch"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A1B86629B4F82A08E70D3A01074B23D9"
-            BuildableName = "Pods_BearlyInTouch.framework"
-            BlueprintName = "Pods-BearlyInTouch"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

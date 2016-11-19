@@ -6,8 +6,9 @@ target 'BearlyInTouch' do
   use_frameworks!
 
   # Pods for BearlyInTouch
-    pod 'Firebase/Core'
-
+    pod 'Firebase/Database'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Storage'
   target 'BearlyInTouchTests' do
     inherit! :search_paths
   end

@@ -6,6 +6,9 @@
 //  Copyright © 2016 BearlyInTouch. All rights reserved.
 //
 
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 import UIKit
 
 class LoginController: UIViewController {
@@ -25,14 +28,48 @@ class LoginController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    let loginRegisterButton: UIButton = {
+    lazy var loginRegisterButton: UIButton = {
         let button = UIButton(type: .System)
         button.backgroundColor = UIColor.whiteColor()
         button.setTitle("Register", forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
+        button.addTarget(self, action: #selector(handleRegister), forControlEvents: .TouchUpInside)
         return button
     }()
+    
+    func handleRegister(){
+        guard let email = emailTextField.text, password = passwordTextField.text else{
+            print("Form is not valid")
+            return
+        }
+        FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: {( user:FIRUser?,error) in
+            
+            if error != nil{
+                print(error)
+                return
+            }
+            
+            guard let uid = user?.uid else{
+                return
+            }
+            
+            //Succesfully authenticated!
+            let ref = FIRDatabase.database().referenceFromURL("https://bearlyintouch-e78b1.firebaseio.com/")
+            let usersReference = ref.child("users").child(uid)
+            let values = ["email": email, "password": password ]
+            usersReference.updateChildValues(values,withCompletionBlock: {(err, ref) in
+                
+                if err != nil{
+                    print(err)
+                    return
+                }
+                print("Saved User Succesfully into Firebase")
+                
+            })
+        })
+        print(123)
+    }
     
     let emailTextField: UITextField = {
         let tf = UITextField()
