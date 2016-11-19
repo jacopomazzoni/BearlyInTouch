@@ -34,7 +34,7 @@ class LoginController: UIViewController {
         button.setTitle("Register", forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
-        button.addTarget(self, action: #selector(handleRegister), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(handleLoginRegister), forControlEvents: .TouchUpInside)
         return button
     }()
     
@@ -64,6 +64,7 @@ class LoginController: UIViewController {
                     print(err)
                     return
                 }
+                self.dismissViewControllerAnimated(true, completion: nil)
                 print("Saved User Succesfully into Firebase")
                 
             })
@@ -109,12 +110,63 @@ class LoginController: UIViewController {
         loginRegisterButton.heightAnchor.constraintEqualToConstant(30).active = true
     }
     
+    func handleLoginRegister(){
+        if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
+            handleLogin()
+        }else{
+            handleRegister()
+        }
+    }
+    
+    func handleLogin(){
+        
+        guard let email = emailTextField.text, password = passwordTextField.text else{
+            print("Form is not valid")
+            return
+        }
+            FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (user, error) in
+                if error != nil {
+                    print(error)
+                    return
+                }
+                //Succesfully Logged in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            })
+    }
+    
     func setupProfileImageView(){
         profileImageView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        profileImageView.bottomAnchor.constraintEqualToAnchor(inputsContainerView.topAnchor,constant: -12).active = true
+        profileImageView.bottomAnchor.constraintEqualToAnchor(loginRegisterSegmentedControl.topAnchor,constant: -12).active = true
         profileImageView.widthAnchor.constraintEqualToConstant(150).active = true
         profileImageView.heightAnchor.constraintEqualToConstant(150).active = true
     }
+    
+    func setupLoginRegisterSegmentedControl(){
+        loginRegisterSegmentedControl.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
+        loginRegisterSegmentedControl.bottomAnchor.constraintEqualToAnchor(inputsContainerView.topAnchor,constant: -12).active = true
+        loginRegisterSegmentedControl.widthAnchor.constraintEqualToAnchor(inputsContainerView.widthAnchor).active = true
+        loginRegisterSegmentedControl.heightAnchor.constraintEqualToConstant(36).active = true
+        
+    }
+    
+    lazy var loginRegisterSegmentedControl: UISegmentedControl = {
+        let sc = UISegmentedControl(items: ["Login", "Register"])
+        sc.translatesAutoresizingMaskIntoConstraints = false
+        sc.tintColor = UIColor.whiteColor()
+        sc.selectedSegmentIndex = 1
+        sc.addTarget(self, action: #selector(handleLoginRegisterChange), forControlEvents: .ValueChanged)
+        
+        return sc
+    }()
+    
+    func handleLoginRegisterChange(){
+        let title = loginRegisterSegmentedControl.titleForSegmentAtIndex(loginRegisterSegmentedControl.selectedSegmentIndex)
+        loginRegisterButton.setTitle(title, forState: .Normal)
+        
+        //Later on, we might want to add more requirements to the logon:
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,11 +178,13 @@ class LoginController: UIViewController {
         view.addSubview(inputsContainerView)
         view.addSubview(loginRegisterButton)
         view.addSubview(profileImageView)
+        view.addSubview(loginRegisterSegmentedControl)
         
         setupInputsContainerView()
         setupLoginRegisterButton()
         setupProfileImageView()
-           }
+        setupLoginRegisterSegmentedControl()
+    }
     
     func setupInputsContainerView(){
         //Constraints
