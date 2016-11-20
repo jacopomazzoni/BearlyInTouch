@@ -11,6 +11,8 @@ import FirebaseAuth
 import FirebaseDatabase
 import UIKit
 
+let theColor : UIColor = UIColor(red: 172/255, green: 75/255, blue: 87/255, alpha: 1)
+
 class LoginController: UIViewController {
     
     let inputsContainerView : UIView = {
@@ -31,10 +33,13 @@ class LoginController: UIViewController {
     lazy var loginRegisterButton: UIButton = {
         let button = UIButton(type: .System)
         button.backgroundColor = UIColor.whiteColor()
+        //UIColor(r: 244, g: 72, b: 66 )
         button.setTitle("Register", forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
+        button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(handleLoginRegister), forControlEvents: .TouchUpInside)
+        button.setTitleColor(theColor, forState: .Normal)
         return button
     }()
     
@@ -170,7 +175,7 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 172/255, green: 75/255, blue: 87/255, alpha: 1)
+        view.backgroundColor = theColor
         //other potential color, pick your favorite:
         //view.backgroundColor = UIColor(red: 75/255, green: 172/255, blue: 160/255, alpha: 1)
         
