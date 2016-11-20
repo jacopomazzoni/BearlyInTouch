@@ -12,15 +12,16 @@
 		4ACF056661C07D4378B2182A /* Pods_BearlyInTouchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6148E8249E277737DC71B19E /* Pods_BearlyInTouchTests.framework */; };
 		BAB3F11C660CF12BCC5188EC /* Pods_BearlyInTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35699AEFFBCA78588F4D6900 /* Pods_BearlyInTouch.framework */; };
 		BF5B99501DDA3400000F3416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B994F1DDA3400000F3416 /* AppDelegate.swift */; };
-		BF5B99521DDA3400000F3416 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B99511DDA3400000F3416 /* ViewController.swift */; };
+		BF5B99521DDA3400000F3416 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B99511DDA3400000F3416 /* MessageController.swift */; };
 		BF5B99551DDA3400000F3416 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5B99531DDA3400000F3416 /* Main.storyboard */; };
 		BF5B99571DDA3400000F3416 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5B99561DDA3400000F3416 /* Assets.xcassets */; };
 		BF5B995A1DDA3400000F3416 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5B99581DDA3400000F3416 /* LaunchScreen.storyboard */; };
 		BF5B99651DDA3400000F3416 /* BearlyInTouchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B99641DDA3400000F3416 /* BearlyInTouchTests.swift */; };
 		BF5B99701DDA3400000F3416 /* BearlyInTouchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B996F1DDA3400000F3416 /* BearlyInTouchUITests.swift */; };
-		BFE275841DDCD05B0080660A /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE275831DDCD05B0080660A /* user.swift */; };
-		BFE275851DDCD05B0080660A /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE275831DDCD05B0080660A /* user.swift */; };
-		BFE275861DDCD05B0080660A /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE275831DDCD05B0080660A /* user.swift */; };
+		BF90BD611DE1F7E800879614 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90BD601DE1F7E800879614 /* NewMessageController.swift */; };
+		BFE275841DDCD05B0080660A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE275831DDCD05B0080660A /* User.swift */; };
+		BFE275851DDCD05B0080660A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE275831DDCD05B0080660A /* User.swift */; };
+		BFE275861DDCD05B0080660A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE275831DDCD05B0080660A /* User.swift */; };
 		BFE275881DDCD0640080660A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE275871DDCD0640080660A /* Message.swift */; };
 		BFE275891DDCD0640080660A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE275871DDCD0640080660A /* Message.swift */; };
 		BFE2758A1DDCD0640080660A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE275871DDCD0640080660A /* Message.swift */; };
@@ -57,7 +58,7 @@
 		974E4750CC9F529C0065D074 /* Pods-BearlyInTouchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BearlyInTouchUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BearlyInTouchUITests/Pods-BearlyInTouchUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BF5B994C1DDA3400000F3416 /* BearlyInTouch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BearlyInTouch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5B994F1DDA3400000F3416 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BF5B99511DDA3400000F3416 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BF5B99511DDA3400000F3416 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		BF5B99541DDA3400000F3416 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF5B99561DDA3400000F3416 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF5B99591DDA3400000F3416 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -68,7 +69,8 @@
 		BF5B996B1DDA3400000F3416 /* BearlyInTouchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BearlyInTouchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5B996F1DDA3400000F3416 /* BearlyInTouchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearlyInTouchUITests.swift; sourceTree = "<group>"; };
 		BF5B99711DDA3400000F3416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BFE275831DDCD05B0080660A /* user.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
+		BF90BD601DE1F7E800879614 /* NewMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
+		BFE275831DDCD05B0080660A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BFE275871DDCD0640080660A /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		BFE3A4781DDA3C7800925F5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F46374BC07F229201C6D40CF /* Pods-BearlyInTouchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BearlyInTouchUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BearlyInTouchUITests/Pods-BearlyInTouchUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,7 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				2FE046CF1DDCF24500E8C56F /* LoginController.swift */,
-				BF5B99511DDA3400000F3416 /* ViewController.swift */,
+				BF5B99511DDA3400000F3416 /* MessageController.swift */,
+				BF90BD601DE1F7E800879614 /* NewMessageController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -194,7 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				BFE275871DDCD0640080660A /* Message.swift */,
-				BFE275831DDCD05B0080660A /* user.swift */,
+				BFE275831DDCD05B0080660A /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -480,10 +483,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF5B99521DDA3400000F3416 /* ViewController.swift in Sources */,
+				BF5B99521DDA3400000F3416 /* MessageController.swift in Sources */,
 				BFE275881DDCD0640080660A /* Message.swift in Sources */,
+				BF90BD611DE1F7E800879614 /* NewMessageController.swift in Sources */,
 				BF5B99501DDA3400000F3416 /* AppDelegate.swift in Sources */,
-				BFE275841DDCD05B0080660A /* user.swift in Sources */,
+				BFE275841DDCD05B0080660A /* User.swift in Sources */,
 				2FE046D01DDCF24500E8C56F /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,7 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFE275891DDCD0640080660A /* Message.swift in Sources */,
-				BFE275851DDCD05B0080660A /* user.swift in Sources */,
+				BFE275851DDCD05B0080660A /* User.swift in Sources */,
 				BF5B99651DDA3400000F3416 /* BearlyInTouchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,7 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFE2758A1DDCD0640080660A /* Message.swift in Sources */,
-				BFE275861DDCD05B0080660A /* user.swift in Sources */,
+				BFE275861DDCD05B0080660A /* User.swift in Sources */,
 				BF5B99701DDA3400000F3416 /* BearlyInTouchUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
