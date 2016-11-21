@@ -28,12 +28,13 @@ class NewMessageController: UITableViewController {
     }
     
     func fetchUser() {
-        FIRDatabase.database().reference().child("users").observeEventType(.ChildAdded, withBlock: { (snapshot) in
+        FIRDatabase.database().reference().child("users").queryOrderedByChild("users").observeEventType(.ChildAdded, withBlock: { (snapshot) in
             
             if let dictionary  = snapshot.value as? [String: AnyObject]{
                 let user = User()
                 user.email = dictionary["email"] as? String
                 self.users.append(user)
+                self.users.sortInPlace { $0.email < $1.email }
             }
             
             dispatch_async(dispatch_get_main_queue(), {
