@@ -15,6 +15,8 @@ let theColor : UIColor = UIColor(red: 172/255, green: 75/255, blue: 87/255, alph
 
 class LoginController: UIViewController {
     
+    var messagesController: MessageController?
+    
     let inputsContainerView : UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.whiteColor()
@@ -43,6 +45,13 @@ class LoginController: UIViewController {
         return button
     }()
     
+    func showAlert(message:String){
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel, handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     func handleRegister(){
         guard let email = emailTextField.text, password = passwordTextField.text else{
             print("Form is not valid")
@@ -52,13 +61,13 @@ class LoginController: UIViewController {
             
             if error != nil{
                 print(error)
+                self.showAlert((error?.localizedDescription)!)
                 return
             }
             
             guard let uid = user?.uid else{
                 return
             }
-            
             //Succesfully authenticated!
             let ref = FIRDatabase.database().referenceFromURL("https://bearlyintouch-e78b1.firebaseio.com/")
             let usersReference = ref.child("users").child(uid)
@@ -67,14 +76,16 @@ class LoginController: UIViewController {
                 
                 if err != nil{
                     print(err)
+                    self.showAlert((err?.localizedDescription)!)
                     return
                 }
+                
+                self.messagesController?.navigationItem.title = values["email"]
                 self.dismissViewControllerAnimated(true, completion: nil)
                 print("Saved User Succesfully into Firebase")
                 
             })
         })
-        print(123)
     }
     
     let emailTextField: UITextField = {
@@ -129,14 +140,16 @@ class LoginController: UIViewController {
             print("Form is not valid")
             return
         }
-            FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (user, error) in
-                if error != nil {
-                    print(error)
-                    return
-                }
-                //Succesfully Logged in
-                self.dismissViewControllerAnimated(true, completion: nil)
-            })
+        FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (user, error) in
+            if error != nil {
+                print(error)
+                self.showAlert((error?.localizedDescription)!)
+                return
+            }
+            //Succesfully Logged in
+            self.messagesController?.fetchUserandSetNavBarTitle()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        })
     }
     
     func setupProfileImageView(){
@@ -208,7 +221,7 @@ class LoginController: UIViewController {
         emailTextField.topAnchor.constraintEqualToAnchor(inputsContainerView.topAnchor).active = true
         emailTextField.widthAnchor.constraintEqualToAnchor(inputsContainerView.widthAnchor).active = true
         emailTextField.heightAnchor.constraintEqualToAnchor(inputsContainerView.heightAnchor,multiplier: 1/2).active = true
-
+        
         emailSeparatorView.leftAnchor.constraintEqualToAnchor(inputsContainerView.leftAnchor).active = true
         emailSeparatorView.topAnchor.constraintEqualToAnchor(emailTextField.bottomAnchor).active = true
         emailSeparatorView.widthAnchor.constraintEqualToAnchor(inputsContainerView.widthAnchor).active = true
@@ -218,15 +231,15 @@ class LoginController: UIViewController {
         passwordTextField.topAnchor.constraintEqualToAnchor(emailTextField.bottomAnchor).active = true
         passwordTextField.widthAnchor.constraintEqualToAnchor(inputsContainerView.widthAnchor).active = true
         passwordTextField.heightAnchor.constraintEqualToAnchor(inputsContainerView.heightAnchor,multiplier: 1/2).active = true
-
+        
         passwordSeparatorView.leftAnchor.constraintEqualToAnchor(inputsContainerView.leftAnchor).active = true
         passwordSeparatorView.topAnchor.constraintEqualToAnchor(passwordTextField.bottomAnchor).active = true
         passwordSeparatorView.widthAnchor.constraintEqualToAnchor(inputsContainerView.widthAnchor).active = true
         passwordSeparatorView.heightAnchor.constraintEqualToConstant(1).active = true
-
+        
         
     }
-
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }

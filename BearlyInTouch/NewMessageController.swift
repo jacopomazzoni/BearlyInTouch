@@ -12,7 +12,7 @@ import FirebaseDatabase
 import FirebaseAuth
 
 class NewMessageController: UITableViewController {
-
+    
     let cellId = "cellID"
     var users = [User]()
     
@@ -28,19 +28,19 @@ class NewMessageController: UITableViewController {
     }
     
     func fetchUser() {
-        FIRDatabase.database().reference().child("users").queryOrderedByChild("users").observeEventType(.ChildAdded, withBlock: { (snapshot) in
+        FIRDatabase.database().reference().child("users").observeEventType(.ChildAdded, withBlock: { (snapshot) in
             
             if let dictionary  = snapshot.value as? [String: AnyObject]{
                 let user = User()
-                user.email = dictionary["email"] as? String
+                user.id = snapshot.key
+                user.email = dictionary["email"] as? String //double check this piece of code
                 self.users.append(user)
-                self.users.sortInPlace { $0.email < $1.email }
             }
             
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
             })
-
+            
             }, withCancelBlock: nil)
     }
     
@@ -61,6 +61,19 @@ class NewMessageController: UITableViewController {
         cell.detailTextLabel?.text = user.email
         return cell
         
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 72
+    }
+    
+    var messagesController: MessageController?
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        dismissViewControllerAnimated(true){
+            let user = self.users[indexPath.row]
+            self.messagesController?.showChatControllerForUser(user)
+        }
     }
 }
 
