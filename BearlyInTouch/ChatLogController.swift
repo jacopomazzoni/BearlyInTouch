@@ -6,8 +6,10 @@
 //  Copyright © 2016 BearlyInTouch. All rights reserved.
 //
 
-import UIKit
 import Firebase
+import FirebaseAuth
+import FirebaseDatabase
+import UIKit
 
 class ChatLogController: UICollectionViewController, UITextFieldDelegate{
     
