@@ -2,14 +2,14 @@
 //  ChatLogController.swift
 //  BearlyInTouch
 //
-//  Created by Jee  on 11/21/16.
+//  Created by Jee on 11/21/16.
 //  Copyright © 2016 BearlyInTouch. All rights reserved.
 //
 
+import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
-import UIKit
 
 class ChatLogController: UICollectionViewController, UITextFieldDelegate{
     
