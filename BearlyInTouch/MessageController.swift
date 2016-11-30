@@ -14,6 +14,7 @@ import FirebaseDatabase
 class MessageController: UITableViewController {
     
     
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -91,6 +92,8 @@ class MessageController: UITableViewController {
                 self.navigationItem.title = dictionary["email"] as? String
             }
             }, withCancelBlock: nil )
+        
+        
     }
     
     func showChatControllerForUser(user: User){
