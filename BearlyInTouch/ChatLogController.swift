@@ -2,7 +2,7 @@
 //  ChatLogController.swift
 //  BearlyInTouch
 //
-//  Created by Jee  on 11/21/16.
+//  Created by Jee on 11/21/16.
 //  Copyright © 2016 BearlyInTouch. All rights reserved.
 //
 

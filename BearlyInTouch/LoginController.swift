@@ -6,10 +6,10 @@
 //  Copyright © 2016 BearlyInTouch. All rights reserved.
 //
 
+import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
-import UIKit
 
 let theColor : UIColor = UIColor(red: 172/255, green: 75/255, blue: 87/255, alpha: 1)
 

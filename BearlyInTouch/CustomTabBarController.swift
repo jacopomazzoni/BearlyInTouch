@@ -29,7 +29,7 @@ class CustomTabBarController: UITabBarController {
 //        let settingsController = UINavigationController(rootViewController: viewController)
 //        settingsController.tabBarItem.title = "Settings"
 
-        viewControllers = [messageController,createDummyNavControllerWithTitle("Match",image: "match"),createDummyNavControllerWithTitle("Past Match",image: "messages"),createDummyNavControllerWithTitle("Settings",image: "settings")]
+        viewControllers = [messageController,createDummyNavControllerWithTitle("Match",image: "match"),createDummyNavControllerWithTitle("Messages",image: "messages"),createDummyNavControllerWithTitle("Settings",image: "settings")]
     
     }
     
