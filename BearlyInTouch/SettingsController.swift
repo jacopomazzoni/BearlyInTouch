@@ -174,7 +174,7 @@ class SettingsController: UITableViewController {
         var value : String = ""
         guard let uid = FIRAuth.auth()?.currentUser?.uid else
         { return }
-        
+        //FIXME: ADD QUERY THAT CALS FOR USER NAME AND Personal Message AND IMAGE
         FIRDatabase.database().reference().child("users").child(uid).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             if let dictionary = snapshot.value as? [String : AnyObject] {
                 value = (dictionary["email"] as? String)!
