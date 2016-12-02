@@ -61,8 +61,10 @@ class SettingsController: UITableViewController {
         settingsView.append( {
             let cell = UITableViewCell(style: .Default, reuseIdentifier: "title")
             cell.textLabel?.text = "Profile"
+            cell.textLabel?.font = cell.textLabel?.font.fontWithSize(30)
             cell.detailTextLabel?.text = ""
             cell.textLabel?.textAlignment = .Center
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell }())
         
         settingsView.append( {
@@ -102,6 +104,7 @@ class SettingsController: UITableViewController {
         
         settingsView.append( {
             let cell = UITableViewCell(style: .Default, reuseIdentifier: "spacer")
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell }())
         
         settingsView.append( {
@@ -113,6 +116,7 @@ class SettingsController: UITableViewController {
         
         settingsView.append( {
             let cell = UITableViewCell(style: .Default, reuseIdentifier: "spacer")
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell }())
         
         settingsView.append( {
