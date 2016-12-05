@@ -13,8 +13,12 @@ import UIKit
 
 class CustomTabBarController: UITabBarController {
     
+    var matchingUser = User()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         let messageController : UINavigationController = {
             let nav = UINavigationController(rootViewController: MessageController())
@@ -23,13 +27,28 @@ class CustomTabBarController: UITabBarController {
             return nav
         }()
         
+        
+        
         let matchController : UINavigationController = {
-            return createDummyNavControllerWithTitle("Match",image: "match")
+            
+            let chatLogController = MatchingController(collectionViewLayout: UICollectionViewFlowLayout())
+            //let user = fetchMatch()
+            //chatLogController.user = user
+            let nav = UINavigationController(rootViewController: chatLogController)
+            //let chatLogController = UINavigationController(rootViewController: MatchingController())
+            //chatLogController.user = fetchMatch()
+            //let newUser = fetchMatch()
+            //let nav = UINavigationController(rootViewController: MatchingController(newUser))
+            nav.tabBarItem.title = "Match"
+            nav.tabBarItem.image = UIImage(named: "match")
+            return nav
         }()
+        
         
         let messagesController : UINavigationController = {
             return createDummyNavControllerWithTitle("Messages",image: "messages")
         }()
+        
         
         let settingsController : UINavigationController = {
             let nav = UINavigationController(rootViewController: SettingsController())
@@ -47,10 +66,12 @@ class CustomTabBarController: UITabBarController {
         //
         //        let settingsController = UINavigationController(rootViewController: viewController)
         //        settingsController.tabBarItem.title = "Settings"
-        
         viewControllers = [messageController,matchController,messagesController,settingsController]
     
     }
+    
+
+    
     
     private func createDummyNavControllerWithTitle(title: String, image: String) -> UINavigationController{
         let viewController  = UIViewController()
@@ -59,7 +80,6 @@ class CustomTabBarController: UITabBarController {
         navController.tabBarItem.image = UIImage(named: image)
         return navController
     }
-    
     
     
 }

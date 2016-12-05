@@ -103,5 +103,6 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate{
         return true
     }
     
+        
     
 }

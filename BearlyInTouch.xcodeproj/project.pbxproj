@@ -10,6 +10,7 @@
 		297893A4734FF96E6286AA6F /* Pods_BearlyInTouchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F30B784095C4B7C58FFB56A /* Pods_BearlyInTouchUITests.framework */; };
 		2F14DC8C1DE4BFA80064828E /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F14DC8B1DE4BFA80064828E /* CustomTabBarController.swift */; };
 		2FE046D01DDCF24500E8C56F /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE046CF1DDCF24500E8C56F /* LoginController.swift */; };
+		2FEB02041DF3912800B4D4FF /* MatchingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEB02031DF3912800B4D4FF /* MatchingController.swift */; };
 		4ACF056661C07D4378B2182A /* Pods_BearlyInTouchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6148E8249E277737DC71B19E /* Pods_BearlyInTouchTests.framework */; };
 		BAB3F11C660CF12BCC5188EC /* Pods_BearlyInTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35699AEFFBCA78588F4D6900 /* Pods_BearlyInTouch.framework */; };
 		BF1570E51DF1E370008F85C3 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1570E41DF1E370008F85C3 /* SettingsController.swift */; };
@@ -55,6 +56,7 @@
 		165167580872C1C75DDB5855 /* Pods-BearlyInTouchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BearlyInTouchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BearlyInTouchTests/Pods-BearlyInTouchTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F14DC8B1DE4BFA80064828E /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		2FE046CF1DDCF24500E8C56F /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		2FEB02031DF3912800B4D4FF /* MatchingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchingController.swift; sourceTree = "<group>"; };
 		35699AEFFBCA78588F4D6900 /* Pods_BearlyInTouch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BearlyInTouch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D067EF09B89FDBEE6EF6E1 /* Pods-BearlyInTouchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BearlyInTouchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BearlyInTouchTests/Pods-BearlyInTouchTests.release.xcconfig"; sourceTree = "<group>"; };
 		6148E8249E277737DC71B19E /* Pods_BearlyInTouchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BearlyInTouchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +119,7 @@
 				2FE046CF1DDCF24500E8C56F /* LoginController.swift */,
 				BF5B99511DDA3400000F3416 /* MessageController.swift */,
 				BF90BD601DE1F7E800879614 /* NewMessageController.swift */,
+				2FEB02031DF3912800B4D4FF /* MatchingController.swift */,
 				BF461D241DE266E600DD42FF /* ChatLogController.swift */,
 				2F14DC8B1DE4BFA80064828E /* CustomTabBarController.swift */,
 				BF1570E41DF1E370008F85C3 /* SettingsController.swift */,
@@ -494,6 +497,7 @@
 			files = (
 				BF1570E51DF1E370008F85C3 /* SettingsController.swift in Sources */,
 				BF5B99521DDA3400000F3416 /* MessageController.swift in Sources */,
+				2FEB02041DF3912800B4D4FF /* MatchingController.swift in Sources */,
 				BFE275881DDCD0640080660A /* Message.swift in Sources */,
 				BF90BD611DE1F7E800879614 /* NewMessageController.swift in Sources */,
 				2F14DC8C1DE4BFA80064828E /* CustomTabBarController.swift in Sources */,
