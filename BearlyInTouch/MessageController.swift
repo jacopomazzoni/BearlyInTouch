@@ -13,20 +13,29 @@ import FirebaseDatabase
 
 class MessageController: UITableViewController {
     
-    
+    let cellId = "cellId"
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        //var navigationBarAppearace = UINavigationBar.appearance()
+        
+        
+        //navigationBarAppearace.tintColor = UIColor.brownColor()
+        //navigationBarAppearace.barTintColor = UIColor.brownColor()
+        
+        
+
         // Add Logout button to navbar
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(handleLogout))
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: #selector(handleNewMessage))
         
         //handling the user not logged in
         checkIfUserIsLoggedIn()
+        
+        tableView.registerClass(UserCell.self, forCellReuseIdentifier: cellId)
         
         
         
@@ -35,13 +44,7 @@ class MessageController: UITableViewController {
     var messages = [Message]()
     var messagesDictionary = [String: Message]()
     
-    let timeLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFontOfSize(12)
-        label.textColor = UIColor.lightGrayColor()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+  
     
     func observeUserMessages(){
         guard let uid = FIRAuth.auth()?.currentUser?.uid else{
@@ -54,9 +57,18 @@ class MessageController: UITableViewController {
             messageReference.observeSingleEventOfType(.Value, withBlock: {(snapshot) in
                 
                 if let dictionary = snapshot.value as? [String: AnyObject]{
-                    print(dictionary)
                     let message = Message()
-                    message.setValuesForKeysWithDictionary(dictionary)
+                    
+                   
+                    
+                    //message.setValuesForKeysWithDictionary(dictionary)
+                    // Conveninence initializer is evil this is less sexy but safer
+                    message.fromId = dictionary["fromId"] as? String
+                    message.text = dictionary["text"] as? String
+                    message.toId  = dictionary["toId"] as? String
+                    message.timeStamp = dictionary["timeStamp"] as? NSNumber
+                    
+                    
                     
                     //group the messages together
                     if let toId = message.toId{
@@ -82,9 +94,10 @@ class MessageController: UITableViewController {
         ref.observeEventType(.ChildAdded, withBlock: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject]{
-                print(dictionary)
                 let message = Message()
                 message.setValuesForKeysWithDictionary(dictionary)
+                self.messagesDictionary = [String : Message]()
+                self.messages = [Message]()
                 
                 //group the messages together
                 if let toId = message.toId{
@@ -108,42 +121,11 @@ class MessageController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "cellId")
         
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! UserCell
+                
         let message = messages[indexPath.row]
-        
-        //text label for the users
-        if let toId = message.toId{
-            let ref = FIRDatabase.database().reference().child("users").child(toId)
-            ref.observeEventType(.Value, withBlock: {(snapshot)
-                in
-                if let dictionary = snapshot.value as? [String:AnyObject]{
-                    cell.textLabel?.text = dictionary["email"] as? String
-                    cell.textLabel?.font = UIFont.boldSystemFontOfSize(16)
-                    
-                    
-                }
-                }, withCancelBlock: nil)
-            
-        }
-        
-        //text label for the messages
-        cell.detailTextLabel?.text = message.text
-        cell.addSubview(self.timeLabel)
-        if let seconds = message.timeStamp?.doubleValue{
-            let timeStampDate = NSDate(timeIntervalSince1970: seconds)
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "hh:mm:ss a"
-            timeLabel.text = dateFormatter.stringFromDate(timeStampDate)
-        }
-        
-        
-        //UI Label constraints
-        timeLabel.rightAnchor.constraintEqualToAnchor(cell.rightAnchor).active = true
-        timeLabel.topAnchor.constraintEqualToAnchor(cell.topAnchor, constant: 20).active = true
-        timeLabel.widthAnchor.constraintEqualToConstant(100).active = true
-        timeLabel.heightAnchor.constraintEqualToAnchor(cell.textLabel?.heightAnchor).active = true
-        
+        cell.message = message
         return cell
 
     }
@@ -165,11 +147,9 @@ class MessageController: UITableViewController {
             }
             let user = User()
             user.id = chatPartnerId
-            print("four")
-            print(dictionary)
             user.email = dictionary["email"] as? String
             //user.setValuesForKeysWithDictionary(dictionary)
-            print("five")
+            //print("dictionary \(snapshot)")
             self.showChatControllerForUser(user)
         }, withCancelBlock: nil )
 

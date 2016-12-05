@@ -155,18 +155,11 @@ class SettingsController: UITableViewController {
         }
     }
     
+    var messageController: MessageController?
+    
     func handleLogout(){
+        messageController?.handleLogout()
         
-        do{
-            try FIRAuth.auth()?.signOut()
-        }catch let logoutError{
-            print(logoutError)
-        }
-        
-        
-        let loginController = LoginController()
-        loginController.messagesController = nil
-        presentViewController(loginController, animated: true, completion: nil)
     }
     
     func fetchUserAndPopulate()

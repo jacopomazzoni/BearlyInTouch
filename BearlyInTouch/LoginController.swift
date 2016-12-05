@@ -69,7 +69,7 @@ class LoginController: UIViewController {
                 return
             }
             //Succesfully authenticated!
-            let ref = FIRDatabase.database().referenceFromURL("https://bearlyintouch-e78b1.firebaseio.com/")
+            let ref = FIRDatabase.database().reference()
             let usersReference = ref.child("users").child(uid)
             let values = ["email": email, "password": password ]
             usersReference.updateChildValues(values,withCompletionBlock: {(err, ref) in
