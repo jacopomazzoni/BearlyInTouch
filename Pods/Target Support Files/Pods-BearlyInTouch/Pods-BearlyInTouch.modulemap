@@ -1,0 +1,6 @@
+framework module Pods_BearlyInTouch {
+  umbrella header "Pods-BearlyInTouch-umbrella.h"
+
+  export *
+  module * { export * }
+}
