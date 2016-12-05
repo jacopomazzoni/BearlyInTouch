@@ -25,7 +25,12 @@ class CustomTabBarController: UITabBarController {
         }()
         
         let matchController : UINavigationController = {
-            return createDummyNavControllerWithTitle("Match",image: "match")
+            
+            let chatLogController = MatchingController(collectionViewLayout: UICollectionViewFlowLayout())
+            let nav = UINavigationController(rootViewController: chatLogController)
+            nav.tabBarItem.title = "Match"
+            nav.tabBarItem.image = UIImage(named: "match")
+            return nav
         }()
         
         let messagesController : UINavigationController = {
