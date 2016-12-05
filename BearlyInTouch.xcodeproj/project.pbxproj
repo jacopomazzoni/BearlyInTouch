@@ -30,6 +30,8 @@
 		9941593A1DF5133B005497A4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994159381DF5133B005497A4 /* UserCell.swift */; };
 		9941593B1DF5133B005497A4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994159381DF5133B005497A4 /* UserCell.swift */; };
 		BAB3F11C660CF12BCC5188EC /* Pods_BearlyInTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35699AEFFBCA78588F4D6900 /* Pods_BearlyInTouch.framework */; };
+		BF3330DB1DF54743003549DB /* ProfileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3330DA1DF54743003549DB /* ProfileImageCell.swift */; };
+		BF3330DD1DF54796003549DB /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3330DC1DF54796003549DB /* FirebaseHelper.swift */; };
 		BF461D251DE266E600DD42FF /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF461D241DE266E600DD42FF /* ChatLogController.swift */; };
 		BF5B99501DDA3400000F3416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B994F1DDA3400000F3416 /* AppDelegate.swift */; };
 		BF5B99521DDA3400000F3416 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B99511DDA3400000F3416 /* MessageController.swift */; };
@@ -83,6 +85,8 @@
 		994159301DF51325005497A4 /* navExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = navExt.swift; sourceTree = "<group>"; };
 		994159341DF51333005497A4 /* UIImageExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExt.swift; sourceTree = "<group>"; };
 		994159381DF5133B005497A4 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		BF3330DA1DF54743003549DB /* ProfileImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageCell.swift; sourceTree = "<group>"; };
+		BF3330DC1DF54796003549DB /* FirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		BF461D241DE266E600DD42FF /* ChatLogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 		BF5B994C1DDA3400000F3416 /* BearlyInTouch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BearlyInTouch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5B994F1DDA3400000F3416 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				2F7351211DF52B4E00792AEC /* MatchingController.swift */,
+				BF3330DA1DF54743003549DB /* ProfileImageCell.swift */,
+				BF3330DC1DF54796003549DB /* FirebaseHelper.swift */,
 				994159301DF51325005497A4 /* navExt.swift */,
 				994159341DF51333005497A4 /* UIImageExt.swift */,
 				2FE046CF1DDCF24500E8C56F /* LoginController.swift */,
@@ -527,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF3330DD1DF54796003549DB /* FirebaseHelper.swift in Sources */,
 				994159241DF512B6005497A4 /* SettingsController.swift in Sources */,
 				994159391DF5133B005497A4 /* UserCell.swift in Sources */,
 				994159291DF512EE005497A4 /* ChatMessageCell.swift in Sources */,
@@ -538,6 +545,7 @@
 				BF90BD611DE1F7E800879614 /* NewMessageController.swift in Sources */,
 				9941592D1DF5130E005497A4 /* CustomTabBarController.swift in Sources */,
 				BF461D251DE266E600DD42FF /* ChatLogController.swift in Sources */,
+				BF3330DB1DF54743003549DB /* ProfileImageCell.swift in Sources */,
 				BF5B99501DDA3400000F3416 /* AppDelegate.swift in Sources */,
 				BFE275841DDCD05B0080660A /* User.swift in Sources */,
 				2FE046D01DDCF24500E8C56F /* LoginController.swift in Sources */,

@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
+var Mydb = FirebaseHelper()
 let theColor : UIColor = UIColor(red: 172/255, green: 75/255, blue: 87/255, alpha: 1)
 
 class LoginController: UIViewController {
@@ -71,7 +72,7 @@ class LoginController: UIViewController {
             //Succesfully authenticated!
             let ref = FIRDatabase.database().reference()
             let usersReference = ref.child("users").child(uid)
-            let values = ["email": email, "password": password ]
+            let values = ["email": email, "password": password, "nameFirst": "", "nameLast": "", "status": "",  "major": ""]
             usersReference.updateChildValues(values,withCompletionBlock: {(err, ref) in
                 
                 if err != nil{
