@@ -34,6 +34,7 @@ class CustomTabBarController: UITabBarController {
         }()
         
         let messagesController : UINavigationController = {
+
             return createDummyNavControllerWithTitle("Messages",image: "messages")
         }()
         

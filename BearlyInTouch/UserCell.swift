@@ -39,7 +39,7 @@ class UserCell : UITableViewCell {
             ref.observeEventType(.Value, withBlock: {
                 (snapshot) in
                 
-                print(snapshot)
+                
                 
                 if let dictionary = snapshot.value as? [String:AnyObject]{
                     self.textLabel?.text = dictionary["email"] as? String

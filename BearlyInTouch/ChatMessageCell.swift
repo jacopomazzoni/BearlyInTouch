@@ -25,9 +25,12 @@ class ChatMessageCell: UICollectionViewCell {
        let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 0.6)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 16
+        view.layer.masksToBounds = true 
         return view
     }()
     
+    var bubbleWidthAnchor: NSLayoutConstraint?
     
     override init (frame: CGRect){
         super.init(frame: frame)
@@ -35,14 +38,19 @@ class ChatMessageCell: UICollectionViewCell {
         addSubview(bubbleView)
         addSubview(textView)
         
-        bubbleView.rightAnchor.constraintEqualToAnchor(self.rightAnchor).active = true
+        bubbleView.rightAnchor.constraintEqualToAnchor(self.rightAnchor, constant: -8).active = true
         bubbleView.topAnchor.constraintEqualToAnchor(self.topAnchor).active = true
-        bubbleView.widthAnchor.constraintEqualToConstant(200).active = true
+        
+        bubbleWidthAnchor = bubbleView.widthAnchor.constraintEqualToConstant(200)
+        bubbleWidthAnchor?.active = true
         bubbleView.heightAnchor.constraintEqualToAnchor(self.heightAnchor).active = true
         
-        textView.rightAnchor.constraintEqualToAnchor(self.rightAnchor).active = true
+        textView.leftAnchor.constraintEqualToAnchor(bubbleView.leftAnchor, constant: 8).active = true
         textView.topAnchor.constraintEqualToAnchor(self.topAnchor).active = true
-        textView.widthAnchor.constraintEqualToConstant(200).active = true
+        //textView.widthAnchor.constraintEqualToConstant(200).active = true
+        
+        textView.rightAnchor.constraintEqualToAnchor(bubbleView.rightAnchor).active = true
+        
         textView.heightAnchor.constraintEqualToAnchor(self.heightAnchor).active = true
         
     }

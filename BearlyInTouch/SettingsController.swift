@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-//GLOBALS
+//Wehn re-running the app, the tableviews are appended twice but gone upon switching back and forth from a different tab
 
 
 class SettingsController: UITableViewController {
@@ -39,6 +39,7 @@ class SettingsController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         super.viewDidLoad()
         
+        self.settingsView = [UITableViewCell]()
         // Add navbar Title
         navigationItem.title = "Settings"
         
@@ -47,6 +48,13 @@ class SettingsController: UITableViewController {
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.settingsView = [UITableViewCell]() //possible error by appending too many into the array?
+        
+        viewDidLoad()
+    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -132,8 +140,6 @@ class SettingsController: UITableViewController {
             let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "logout")
             cell.textLabel?.text = "Logout"
             cell.detailTextLabel?.text = self.userEmail
-            print(self.userEmail)
-            print ("Jacopo")
             cell.textLabel?.textAlignment = .Center
             return cell }())
     }
@@ -186,7 +192,7 @@ class SettingsController: UITableViewController {
     
     func displayShareSheet(indexPath: NSIndexPath)
     {
-        print("shibaljotgga")
+       
         
         if(indexPath.row == 2){
             var nameFirst = ""

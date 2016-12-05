@@ -193,9 +193,7 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
                                 user.id = partnerMatch
                                 user.email = matchEmail
                                 self.user = user
-                                print("going crazy")
-                                print(user.id)
-                                print(user.email)
+                                
                                 self.navigationItem.title = partnerEmailString
                             }else{
                                 print("fail")

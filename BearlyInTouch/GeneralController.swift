@@ -11,23 +11,17 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class MessageController: UITableViewController {
+class GeneralController: UITableViewController {
     
     let cellId = "cellId"
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        //var navigationBarAppearace = UINavigationBar.appearance()
+        // Do any additional setup after loading the view, typically from a nib
         
         
-        //navigationBarAppearace.tintColor = UIColor.brownColor()
-        //navigationBarAppearace.barTintColor = UIColor.brownColor()
         
-        
-
         // Add Logout button to navbar
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(handleLogout))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: #selector(handleNewMessage))
@@ -51,7 +45,7 @@ class MessageController: UITableViewController {
     var messages = [Message]()
     var messagesDictionary = [String: Message]()
     
-  
+    
     
     func observeUserMessages(){
         guard let uid = FIRAuth.auth()?.currentUser?.uid else{
@@ -66,7 +60,7 @@ class MessageController: UITableViewController {
                 if let dictionary = snapshot.value as? [String: AnyObject]{
                     let message = Message()
                     
-                   
+                    
                     
                     //message.setValuesForKeysWithDictionary(dictionary)
                     // Conveninence initializer is evil this is less sexy but safer
@@ -78,9 +72,9 @@ class MessageController: UITableViewController {
                     
                     
                     //group the messages together
-                    if let chatPartnerId = message.chatPartnerId(){
+                    if let toId = message.toId{
                         
-                        self.messagesDictionary[chatPartnerId] = message
+                        self.messagesDictionary[toId] = message
                         self.messages = Array(self.messagesDictionary.values)
                         self.messages.sortInPlace({(message1, message2) -> Bool in
                             return message1.timeStamp?.intValue > message2.timeStamp?.intValue
@@ -94,7 +88,7 @@ class MessageController: UITableViewController {
                 
                 }, withCancelBlock: nil)
             
-        }, withCancelBlock: nil)
+            }, withCancelBlock: nil)
     }
     
     func observeMessages(){
@@ -131,11 +125,11 @@ class MessageController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! UserCell
-                
+        
         let message = messages[indexPath.row]
         cell.message = message
         return cell
-
+        
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -159,8 +153,8 @@ class MessageController: UITableViewController {
             //user.setValuesForKeysWithDictionary(dictionary)
             //print("dictionary \(snapshot)")
             self.showChatControllerForUser(user)
-        }, withCancelBlock: nil )
-
+            }, withCancelBlock: nil )
+        
     }
     
     func handleNewMessage () {
