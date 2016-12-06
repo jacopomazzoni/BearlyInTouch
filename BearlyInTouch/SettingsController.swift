@@ -25,12 +25,10 @@ class SettingsController: UITableViewController {
     var major = String();
     
     let profileImageView : UIImageView = {
-        print("sajin shibal")
         let xOffset: CGFloat = 10
         let imageView = UIImageView()
         imageView.image = UIImage(named: "bear")
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        //imageView.frame = CGRectMake(CGFloat(145), CGFloat(-10), CGFloat(80), CGFloat(80))
         return imageView
     }()
     
@@ -51,7 +49,7 @@ class SettingsController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.settingsView = [UITableViewCell]() //possible error by appending too many into the array?
+        //self.settingsView = [UITableViewCell]() //possible error by appending too many into the array?
         
         viewDidLoad()
     }
@@ -328,8 +326,6 @@ class SettingsController: UITableViewController {
         
         
     }
-    
-    
     
     
     func handleLogout(){

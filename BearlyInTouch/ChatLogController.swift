@@ -13,6 +13,10 @@ import FirebaseDatabase
 
 class ChatLogController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout{
     
+    var messages = [Message]()
+    var containerViewBottomAnchor: NSLayoutConstraint?
+    let cellId = "cellId"
+    
     var user: User?{
         didSet{
             navigationItem.title = user?.email
@@ -21,7 +25,61 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         }
     }
     
-    var messages = [Message]()
+  
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 80, right: 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
+        collectionView?.alwaysBounceVertical = true
+        collectionView?.backgroundColor = UIColor.whiteColor()
+        collectionView?.registerClass(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
+        setupInputComponents()
+    }
+    
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        
+        setupKeyboardObservers()
+    }
+    
+    func setupKeyboardObservers(){
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    func handleKeyboardWillShow(notification: NSNotification) {
+        let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue()
+        let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue
+        
+        
+        containerViewBottomAnchor?.constant = -keyboardFrame!.height
+        
+        UIView.animateWithDuration(keyboardDuration!){
+            self.view.layoutIfNeeded()
+        }
+        
+        
+    }
+    
+    func handleKeyboardWillHide(notification: NSNotification) {
+        let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue
+        
+        
+        containerViewBottomAnchor?.constant = -49
+        
+        UIView.animateWithDuration(keyboardDuration!){
+            self.view.layoutIfNeeded()
+        }
+    }
+
     
     func observeMessages() {
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
@@ -62,18 +120,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         return textField
     }()
     
-    let cellId = "cellId"
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 80, right: 0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
-        collectionView?.alwaysBounceVertical = true
-        collectionView?.backgroundColor = UIColor.whiteColor()
-        collectionView?.registerClass(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
-        setupInputComponents()
-    }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
@@ -122,7 +169,11 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         view.addSubview(containerView)
         
         containerView.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
-        containerView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor, constant: -50).active = true
+        
+        //containerView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor, constant: -50).active = true
+        containerViewBottomAnchor = containerView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor, constant: -49)
+        containerViewBottomAnchor?.active = true
+        
         containerView.widthAnchor.constraintEqualToAnchor(view.widthAnchor).active = true
         containerView.heightAnchor.constraintEqualToConstant(50).active = true
         
