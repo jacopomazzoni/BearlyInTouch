@@ -76,6 +76,8 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
         matchingString = "matching-" + dateFormatter.stringFromDate(NSDate())
         print(matchingString)
         fetchMatch()
+        collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 80, right: 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
         collectionView?.backgroundColor = UIColor.whiteColor()
         updateRightBarButton(isLiked)
         
@@ -95,11 +97,50 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
         let message = messages[indexPath.item]
         cell.textView.text = message.text
         
+        setupCell(cell, message: message)
+        
+        //modify the bubbleView's width
+        
+        cell.bubbleWidthAnchor?.constant = estimatedFrameForText(message.text!).width + 32
+        
         return cell
     }
     
+    private func setupCell(cell: ChatMessageCell, message: Message){
+        if message.fromId == FIRAuth.auth()?.currentUser?.uid{
+            cell.bubbleView.backgroundColor = ChatMessageCell.blueColor
+            cell.textView.textColor = UIColor.whiteColor()
+            cell.bubbleRightAnchor?.active = true
+            cell.bubbleLeftAnchor?.active = false
+        }else{
+            cell.bubbleView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+            cell.textView.textColor = UIColor.blackColor()
+            cell.bubbleRightAnchor?.active = false
+            cell.bubbleLeftAnchor?.active = true
+        }
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView?.collectionViewLayout.invalidateLayout()
+    }
+    
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 80)
+        
+        var height : CGFloat = 80
+        
+        if let text = messages[indexPath.item].text{
+            height = estimatedFrameForText(text).height + 20
+        }
+        
+        return CGSize(width: view.frame.width, height: height)
+    }
+    
+    private func estimatedFrameForText(text: String) -> CGRect {
+        let size = CGSize(width: 200, height: 1000)
+        let options = NSStringDrawingOptions.UsesFontLeading.union(.UsesLineFragmentOrigin)
+        
+        return NSString(string: text).boundingRectWithSize(size, options: options, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(16)], context: nil)
     }
     
     func setupInputComponents(){

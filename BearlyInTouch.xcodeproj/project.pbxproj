@@ -11,6 +11,7 @@
 		2F7351221DF52B4E00792AEC /* MatchingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7351211DF52B4E00792AEC /* MatchingController.swift */; };
 		2FE046D01DDCF24500E8C56F /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE046CF1DDCF24500E8C56F /* LoginController.swift */; };
 		4ACF056661C07D4378B2182A /* Pods_BearlyInTouchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6148E8249E277737DC71B19E /* Pods_BearlyInTouchTests.framework */; };
+		68EF6E2B1DF75E15000F4D90 /* GeneralChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EF6E2A1DF75E15000F4D90 /* GeneralChatController.swift */; };
 		994159241DF512B6005497A4 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994159231DF512B6005497A4 /* SettingsController.swift */; };
 		994159251DF512B6005497A4 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994159231DF512B6005497A4 /* SettingsController.swift */; };
 		994159261DF512B6005497A4 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994159231DF512B6005497A4 /* SettingsController.swift */; };
@@ -77,6 +78,7 @@
 		35699AEFFBCA78588F4D6900 /* Pods_BearlyInTouch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BearlyInTouch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D067EF09B89FDBEE6EF6E1 /* Pods-BearlyInTouchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BearlyInTouchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BearlyInTouchTests/Pods-BearlyInTouchTests.release.xcconfig"; sourceTree = "<group>"; };
 		6148E8249E277737DC71B19E /* Pods_BearlyInTouchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BearlyInTouchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		68EF6E2A1DF75E15000F4D90 /* GeneralChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralChatController.swift; sourceTree = "<group>"; };
 		7F30B784095C4B7C58FFB56A /* Pods_BearlyInTouchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BearlyInTouchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		974E4750CC9F529C0065D074 /* Pods-BearlyInTouchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BearlyInTouchUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BearlyInTouchUITests/Pods-BearlyInTouchUITests.release.xcconfig"; sourceTree = "<group>"; };
 		994159231DF512B6005497A4 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				BF461D241DE266E600DD42FF /* ChatLogController.swift */,
 				9941592C1DF5130E005497A4 /* CustomTabBarController.swift */,
 				994159231DF512B6005497A4 /* SettingsController.swift */,
+				68EF6E2A1DF75E15000F4D90 /* GeneralChatController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				994159291DF512EE005497A4 /* ChatMessageCell.swift in Sources */,
 				994159311DF51325005497A4 /* navExt.swift in Sources */,
 				2F7351221DF52B4E00792AEC /* MatchingController.swift in Sources */,
+				68EF6E2B1DF75E15000F4D90 /* GeneralChatController.swift in Sources */,
 				BF5B99521DDA3400000F3416 /* MessageController.swift in Sources */,
 				BFE275881DDCD0640080660A /* Message.swift in Sources */,
 				994159351DF51333005497A4 /* UIImageExt.swift in Sources */,

@@ -17,7 +17,8 @@ class CustomTabBarController: UITabBarController {
         super.viewDidLoad()
         
         let messageController : UINavigationController = {
-            let nav = UINavigationController(rootViewController: MessageController())
+            let generalChatController = GeneralChatController(collectionViewLayout: UICollectionViewFlowLayout())
+            let nav = UINavigationController(rootViewController: generalChatController)
             nav.test()
             nav.tabBarItem.title = "General"
             nav.tabBarItem.image = UIImage(named: "mainGroup")
@@ -34,8 +35,11 @@ class CustomTabBarController: UITabBarController {
         }()
         
         let messagesController : UINavigationController = {
-
-            return createDummyNavControllerWithTitle("Messages",image: "messages")
+            let nav = UINavigationController(rootViewController: MessageController())
+            nav.test()
+            nav.tabBarItem.title = "Message"
+            nav.tabBarItem.image = UIImage(named: "messages")
+            return nav
         }()
         
         let settingsController : UINavigationController = {

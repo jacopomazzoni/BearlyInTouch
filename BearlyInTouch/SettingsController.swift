@@ -32,26 +32,32 @@ class SettingsController: UITableViewController {
         return imageView
     }()
     
-    override func viewDidLoad() {
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        super.viewDidLoad()
-        
+//    override func viewDidLoad() {
+//        
+//        // Do any additional setup after loading the view, typically from a nib.
+//        super.viewDidLoad()
+//        
+//        self.settingsView = [UITableViewCell]()
+//        // Add navbar Title
+//        navigationItem.title = "Settings"
+//        
+//        // Load User Email and array of cells
+//        self.fetchUserAndPopulate()
+//       
+//        
+//    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
         self.settingsView = [UITableViewCell]()
-        // Add navbar Title
-        navigationItem.title = "Settings"
-        
-        // Load User Email and array of cells
-        self.fetchUserAndPopulate()
-        
     }
     
     override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        //super.viewDidAppear(animated)
         
-        //self.settingsView = [UITableViewCell]() //possible error by appending too many into the array?
+        self.settingsView = [UITableViewCell]() //possible error by appending too many into the array?
+        self.fetchUserAndPopulate()
         
-        viewDidLoad()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -329,14 +335,12 @@ class SettingsController: UITableViewController {
     
     
     func handleLogout(){
-        print("in 1")
         do{
             try Mydb.auth?.signOut()
         }catch let logoutError{
             print(logoutError)
         }
         
-        print("in 2")
         let loginController = LoginController()
         loginController.messagesController = nil
         Mydb = FirebaseHelper()
