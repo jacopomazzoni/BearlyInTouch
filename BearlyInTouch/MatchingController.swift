@@ -16,6 +16,8 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
     var isLiked = false
     var partner = ""
     var matchingString = ""
+    var containerViewBottomAnchor: NSLayoutConstraint?
+        var messages = [Message]()
 
     var user: User?{
         didSet{
@@ -25,24 +27,25 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
         }
     }
     
-    var messages = [Message]()
+
     
     func observeMessages() {
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
             return
         }
         
-        let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(uid)
+        let userMessagesRef = FIRDatabase.database().reference().child("match-only-user-messages").child(uid)
         userMessagesRef.observeEventType(.ChildAdded, withBlock: { (snapshot) in
             
             let messageId = snapshot.key
-            let messagesRef = FIRDatabase.database().reference().child("messages").child(messageId)
+            let messagesRef = FIRDatabase.database().reference().child("match-only-messages").child(messageId)
             messagesRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                 
                 guard let dictionary = snapshot.value as? [String: AnyObject] else {
                     return
                 }
                 
+                print("appending a message")
                 let message = Message()
                 //potential of crashing if keys don't match
                 message.setValuesForKeysWithDictionary(dictionary)
@@ -75,7 +78,6 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
         dateFormatter.dateFormat = "yyyy-MM-dd"
         matchingString = "matching-" + dateFormatter.stringFromDate(NSDate())
         print(matchingString)
-        fetchMatch()
         collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 80, right: 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
         collectionView?.backgroundColor = UIColor.whiteColor()
@@ -86,6 +88,54 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
         collectionView?.registerClass(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         setupInputComponents()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.messages = [Message]()
+        dispatch_async(dispatch_get_main_queue(), {
+            self.collectionView?.reloadData()
+        })
+        fetchMatch()
+        //viewDidLoad()
+        setupKeyboardObservers()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.messages = [Message]()
+        dispatch_async(dispatch_get_main_queue(), {
+            self.collectionView?.reloadData()
+        })
+    }
+    
+    func setupKeyboardObservers(){
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func handleKeyboardWillShow(notification: NSNotification) {
+        let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue()
+        let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue
+        
+        
+        containerViewBottomAnchor?.constant = -keyboardFrame!.height
+        
+        UIView.animateWithDuration(keyboardDuration!){
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func handleKeyboardWillHide(notification: NSNotification) {
+        let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue
+        
+        
+        containerViewBottomAnchor?.constant = -49
+        
+        UIView.animateWithDuration(keyboardDuration!){
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
@@ -186,7 +236,7 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
     }
     
     func handleSend(){
-        let ref = FIRDatabase.database().reference().child("messages")
+        let ref = FIRDatabase.database().reference().child("match-only-messages")
         let childRef = ref.childByAutoId()
         let toId = user!.id!
         let fromId = FIRAuth.auth()!.currentUser!.uid
@@ -198,11 +248,13 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
                 return
             }
             
-            let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(fromId)
+            self.inputTextField.text = nil
+            
+            let userMessagesRef = FIRDatabase.database().reference().child("match-only-user-messages").child(fromId)
             let messageId = childRef.key
             userMessagesRef.updateChildValues([messageId: 1])
             
-            let recipientUserMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId)
+            let recipientUserMessagesRef = FIRDatabase.database().reference().child("match-only-user-messages").child(toId)
             recipientUserMessagesRef.updateChildValues([messageId:1])
         }
     }
@@ -313,6 +365,7 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
                                 return
                             }
                         }
+                        self.sendEmptyMessage()
                         
                     }
                     else{
@@ -324,6 +377,28 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
                 }
             }
             }, withCancelBlock: nil )
+    }
+    
+    func sendEmptyMessage(){
+        let ref = FIRDatabase.database().reference().child("messages")
+        let childRef = ref.childByAutoId()
+        let toId = user!.id!
+        let fromId = FIRAuth.auth()!.currentUser!.uid
+        let timeStamp: NSNumber = Int(NSDate().timeIntervalSince1970)
+        let values = ["text": "You guys have been matched! Say hi!", "toId": toId, "fromId": fromId, "timeStamp": timeStamp]
+        childRef.updateChildValues(values){(error, ref) in
+            if error != nil{
+                print(error)
+                return
+            }
+            let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(fromId)
+            let messageId = childRef.key
+            userMessagesRef.updateChildValues([messageId: 1])
+            
+            let recipientUserMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId)
+            recipientUserMessagesRef.updateChildValues([messageId:1])
+        }
+        
     }
     
 }

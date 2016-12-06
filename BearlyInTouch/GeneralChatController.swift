@@ -20,8 +20,6 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
     var user: User?{
         didSet{
             self.navigationItem.title = "General"
-            
-            observeMessages()
         }
     }
     
