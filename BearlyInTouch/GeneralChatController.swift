@@ -21,7 +21,7 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
         didSet{
             self.navigationItem.title = "General"
             
-            observeMessages()
+            
         }
     }
     
@@ -96,8 +96,6 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
        
         userMessagesRef.observeEventType(.ChildAdded, withBlock: { (snapshot) in
             
-            print(snapshot)
-            
             let messageTime = snapshot.key
             let messagesRef = userMessagesRef.child(messageTime)
             messagesRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
@@ -112,7 +110,7 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
                 
                 
                 self.generalMessages.append(message)
-                print(self.generalMessages)
+                
                 dispatch_async(dispatch_get_main_queue(), {
                     self.collectionView?.reloadData()
                 })
@@ -161,7 +159,7 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
             cell.bubbleRightAnchor?.active = true
             cell.bubbleLeftAnchor?.active = false
         }else{
-            cell.bubbleView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+            cell.bubbleView.backgroundColor = UIColor.lightGrayColor()
             cell.textView.textColor = UIColor.blackColor()
             cell.bubbleRightAnchor?.active = false
             cell.bubbleLeftAnchor?.active = true
@@ -241,7 +239,9 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
         let ref = FIRDatabase.database().reference().child("general")
         
         //let childRef = ref.childByAutoId()
-        let toId = "general"
+        let userRandomColor = getRandomColor()
+        
+        let toId = userRandomColor.description
         let fromId = FIRAuth.auth()!.currentUser!.uid
         let timeStamp: NSNumber = Int(NSDate().timeIntervalSince1970)
         let values = ["text": inputTextField.text!, "toId": toId, "fromId": fromId, "timeStamp": timeStamp]
@@ -254,12 +254,6 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
             
             self.inputTextField.text = nil
             
-//            let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(fromId)
-//            let messageId = childRef.key
-//            userMessagesRef.updateChildValues([messageId: 1])
-//            
-//            let recipientUserMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId)
-//            recipientUserMessagesRef.updateChildValues([messageId:1])
         }
     }
     
@@ -267,6 +261,15 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
         handleSend()
         return true
     }
+    
+    func getRandomColor() -> UIColor {
+        let randomRed: CGFloat = CGFloat(drand48())
+        let randomGreen: CGFloat = CGFloat(drand48())
+        let randomBlue: CGFloat = CGFloat(drand48())
+        
+        return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1)
+    }
+    
     
     
 }
