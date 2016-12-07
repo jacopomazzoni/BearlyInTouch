@@ -45,7 +45,9 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
         //super.viewDidDisappear(animated)
         generalMessages = [Message]()
         NSNotificationCenter.defaultCenter().removeObserver(self)
-        FIRDatabase.database().reference().child("general").removeObserverWithHandle(messageHandle!)
+        if let handle = messageHandle {
+            FIRDatabase.database().reference().child("general").removeObserverWithHandle(handle)
+        }
         
     }
     

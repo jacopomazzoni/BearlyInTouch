@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BearlyInTouch/GeneralChatController.swift"
-            timestampString = "502777421.776184"
+            timestampString = "502779166.17021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "observeMessages()"
             landmarkType = "5">
          </BreakpointContent>

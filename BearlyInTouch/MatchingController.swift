@@ -122,7 +122,9 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        FIRDatabase.database().reference().child("match-only-user-messages").child(uid!).removeObserverWithHandle(messagesHandle!)
+        if let message = messagesHandle{
+            FIRDatabase.database().reference().child("match-only-user-messages").child(uid!).removeObserverWithHandle(message)
+        }
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
