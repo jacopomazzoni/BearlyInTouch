@@ -43,7 +43,7 @@ class MessageController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(false)
-        viewDidLoad()
+        //viewDidLoad()
     }
     
     
@@ -194,11 +194,20 @@ class MessageController: UITableViewController {
         }
         FIRDatabase.database().reference().child("users").child(uid).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             if let dictionary = snapshot.value as? [String : AnyObject] {
-                self.navigationItem.title = dictionary["email"] as? String
+                
+                
+                if let navEmail = dictionary["email"] as? String{
+                    let index = navEmail.rangeOfString("@", options: .BackwardsSearch)?.startIndex
+                    let navEmail = navEmail.substringToIndex(index!)
+                    self.navigationItem.title = navEmail
+                    
+//                    if let idx = navEmail.characters.indexOf("@") {
+//                        let pos = navEmail.startIndex.distanceTo(idx)
+//                        let navBarName = navEmail.
+//                    }
+                }
             }
             }, withCancelBlock: nil )
-        
-        
     }
     
     func showChatControllerForUser(user: User){

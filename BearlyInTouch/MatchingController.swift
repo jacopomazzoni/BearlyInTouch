@@ -100,6 +100,9 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
         setupKeyboardObservers()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        setupKeyboardObservers()
+    }
     override func viewWillDisappear(animated: Bool) {
         self.messages = [Message]()
         dispatch_async(dispatch_get_main_queue(), {
@@ -107,10 +110,17 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
         })
     }
     
+    
     func setupKeyboardObservers(){
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func handleKeyboardWillShow(notification: NSNotification) {
@@ -199,6 +209,9 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
         containerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(containerView)
         
+        containerViewBottomAnchor = containerView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor, constant: -50)
+        containerViewBottomAnchor?.active = true
+        
         containerView.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
         containerView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor, constant: -50).active = true
         containerView.widthAnchor.constraintEqualToAnchor(view.widthAnchor).active = true
@@ -286,7 +299,8 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
                                 user.id = partnerMatch
                                 user.email = matchEmail
                                 self.user = user
-                                
+                                let index = partnerEmailString.rangeOfString("@", options: .BackwardsSearch)?.startIndex
+                                let partnerEmailString = partnerEmailString.substringToIndex(index!)
                                 self.navigationItem.title = partnerEmailString
                             }else{
                                 print("fail")

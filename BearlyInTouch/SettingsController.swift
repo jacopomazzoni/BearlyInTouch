@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-//Wehn re-running the app, the tableviews are appended twice but gone upon switching back and forth from a different tab
+//GLOBALS
 
 
 class SettingsController: UITableViewController {
@@ -25,39 +25,38 @@ class SettingsController: UITableViewController {
     var major = String();
     
     let profileImageView : UIImageView = {
+        print("sajin shibal")
         let xOffset: CGFloat = 10
         let imageView = UIImageView()
         imageView.image = UIImage(named: "bear")
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        //imageView.frame = CGRectMake(CGFloat(145), CGFloat(-10), CGFloat(80), CGFloat(80))
         return imageView
     }()
     
-//    override func viewDidLoad() {
-//        
-//        // Do any additional setup after loading the view, typically from a nib.
-//        super.viewDidLoad()
-//        
-//        self.settingsView = [UITableViewCell]()
-//        // Add navbar Title
-//        navigationItem.title = "Settings"
-//        
-//        // Load User Email and array of cells
-//        self.fetchUserAndPopulate()
-//       
-//        
-//    }
+    override func viewDidLoad() {
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        super.viewDidLoad()
+        
+        // Add navbar Title
+        navigationItem.title = "Settings"
+        
+        // Load User Email and array of cells
+        self.fetchUserAndPopulate()
+        
+    }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        self.settingsView = [UITableViewCell]()
+        
+        settingsView.removeAll()
+        self.tableView.reloadData()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        //super.viewDidAppear(animated)
-        
-        self.settingsView = [UITableViewCell]() //possible error by appending too many into the array?
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.fetchUserAndPopulate()
-        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,8 +83,8 @@ class SettingsController: UITableViewController {
         return height
     }
     
-    
     func populateSV(){
+        settingsView.removeAll()
         
         settingsView.append( {
             let cell = UITableViewCell(style: .Default, reuseIdentifier: "title")
@@ -93,15 +92,17 @@ class SettingsController: UITableViewController {
             cell.textLabel?.font = cell.textLabel?.font.fontWithSize(30)
             cell.detailTextLabel?.text = ""
             cell.textLabel?.textAlignment = .Center
+            
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell }())
         
         settingsView.append( {
             let cell = ProfileImageCell(style: UITableViewCellStyle.Default , reuseIdentifier: "image")
             
-                //UITableViewCell(style: .Default, reuseIdentifier: "image")
+            //UITableViewCell(style: .Default, reuseIdentifier: "image")
             //cell.contentView.addSubview(profileImageView)
             //cell.contentView.alignmentRectForFrame(profileImageView.frame)
+            
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell }())
         
@@ -144,6 +145,8 @@ class SettingsController: UITableViewController {
             let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "logout")
             cell.textLabel?.text = "Logout"
             cell.detailTextLabel?.text = self.userEmail
+            print(self.userEmail)
+            print ("Jacopo")
             cell.textLabel?.textAlignment = .Center
             return cell }())
     }
@@ -196,7 +199,7 @@ class SettingsController: UITableViewController {
     
     func displayShareSheet(indexPath: NSIndexPath)
     {
-       
+        print("shibaljotgga")
         
         if(indexPath.row == 2){
             var nameFirst = ""
@@ -215,24 +218,47 @@ class SettingsController: UITableViewController {
             }
             
             let submit = UIAlertAction(title: "Submit", style: .Default, handler: { (action) -> Void in
-            
-            let firstName = alertController.textFields![0] as UITextField
-            let lastName = alertController.textFields![1] as UITextField
+                
+                let firstName = alertController.textFields![0] as UITextField
+                let lastName = alertController.textFields![1] as UITextField
                 
                 let uid = Mydb.auth?.currentUser?.uid
                 let ref = Mydb.db!.reference()
-            let userReference = ref.child("users").child(uid!)
-            
-            nameFirst = firstName.text!
-            nameLast = lastName.text!
-           
-             
+                let userReference = ref.child("users").child(uid!)
+                
+                nameFirst = firstName.text!
+                nameLast = lastName.text!
+                
+                
                 let childUpdates = ["nameFirst": nameFirst, "nameLast": nameLast]
                 userReference.updateChildValues(childUpdates)
-            
+                //self.fetchUserAndPopulate()
+                
+                self.settingsView[2].detailTextLabel?.text = nameFirst + " " + nameLast
+                
+                /*
+                 self.settingsView.append( {
+                 let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "fname")
+                 cell.textLabel?.text = "Full Name"
+                 cell.detailTextLabel?.text = nameFirst + " " + nameLast
+                 cell.textLabel?.textAlignment = .Left
+                 
+                 return cell }())
+                 */
+                
+                
+                self.tableView.reloadData()
+                
+                
+                
+                self.tableView.setEditing(false, animated: true)
+                
             })
             
-            let cancel = UIAlertAction(title: "Cancel", style: .Default, handler: { (action) -> Void in
+            let cancel = UIAlertAction(title: "Cancel", style: .Destructive, handler: { (action) -> Void in
+                
+                self.tableView.setEditing(false, animated: true)
+                
             })
             
             alertController.addAction(submit)
@@ -254,7 +280,25 @@ class SettingsController: UITableViewController {
                 
                 let childUpdates = ["status": self.status]
                 userReference.updateChildValues(childUpdates)
-
+                
+                
+                //self.fetchUserAndPopulate()
+                
+                /*
+                 self.settingsView.removeAtIndex(4)
+                 
+                 self.settingsView.append( {
+                 let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "affiliation")
+                 cell.textLabel?.text = "Status"
+                 cell.detailTextLabel?.text = self.status
+                 cell.textLabel?.textAlignment = .Center
+                 return cell }())
+                 */
+                
+                self.settingsView[4].detailTextLabel?.text = "Undergraduate"
+                self.tableView.reloadData()
+                self.tableView.setEditing(false, animated: true)
+                
             })
             
             let graduate = UIAlertAction(title: "Graduate", style: .Default, handler: { (action) -> Void in
@@ -266,6 +310,24 @@ class SettingsController: UITableViewController {
                 
                 let childUpdates = ["status": self.status]
                 userReference.updateChildValues(childUpdates)
+                
+                
+                
+                //self.fetchUserAndPopulate()
+                
+                /*
+                 self.settingsView.removeAtIndex(4)
+                 
+                 self.settingsView.append( {
+                 let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "affiliation")
+                 cell.textLabel?.text = "Status"
+                 cell.detailTextLabel?.text = self.status
+                 cell.textLabel?.textAlignment = .Center
+                 return cell }())
+                 */
+                self.settingsView[4].detailTextLabel?.text = "Graduate"
+                self.tableView.reloadData()
+                self.tableView.setEditing(false, animated: true)
             })
             
             let faculty = UIAlertAction(title: "Faculty/Staff", style: .Default, handler: { (action) -> Void in
@@ -278,11 +340,31 @@ class SettingsController: UITableViewController {
                 
                 let childUpdates = ["status": self.status]
                 userReference.updateChildValues(childUpdates)
+                
+                
+                
+                self.fetchUserAndPopulate()
+                
+                /*
+                 self.settingsView.removeAtIndex(4)
+                 
+                 self.settingsView.append( {
+                 let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "affiliation")
+                 cell.textLabel?.text = "Status"
+                 cell.detailTextLabel?.text = self.status
+                 cell.textLabel?.textAlignment = .Center
+                 return cell }())
+                 */
+                
+                self.settingsView[4].detailTextLabel?.text = "Faculty/Staff"
+                self.tableView.reloadData()
+                self.tableView.setEditing(false, animated: true)
             })
             
-            let cancel = UIAlertAction(title: "Cancel", style: .Default, handler: { (action) -> Void in
-            
+            let cancel = UIAlertAction(title: "Cancel", style: .Destructive, handler: { (action) -> Void in
+                
                 //print("Send now button tapped for value \(self.itemsToLoad[indexPath.row])")
+                self.tableView.setEditing(false, animated: true)
             })
             
             alertController.addAction(undergraduate)
@@ -302,7 +384,7 @@ class SettingsController: UITableViewController {
             }
             
             let submit = UIAlertAction(title: "Submit", style: .Default, handler: { (action) -> Void in
-            
+                
                 let majorField = alertController.textFields![0] as UITextField
                 
                 let uid = FIRAuth.auth()?.currentUser?.uid
@@ -310,41 +392,68 @@ class SettingsController: UITableViewController {
                 let userReference = ref.child("users").child(uid!)
                 
                 self.major = majorField.text!
-               
+                
                 
                 
                 let childUpdates = ["major": self.major]
                 userReference.updateChildValues(childUpdates)
                 
-
                 
+                
+                
+                
+                //self.fetchUserAndPopulate()
+                
+                /*
+                 self.settingsView.removeAtIndex(5)
+                 
+                 self.settingsView.append( {
+                 let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "major")
+                 cell.textLabel?.text = "Major/Area of Study"
+                 cell.detailTextLabel?.text = self.major
+                 cell.textLabel?.textAlignment = .Center
+                 return cell }())
+                 */
+                
+                self.settingsView[5].detailTextLabel?.text = self.major
+                
+                self.tableView.reloadData()
+                
+                self.tableView.setEditing(false, animated: true)
             })
             
-            let cancel = UIAlertAction(title: "Cancel", style: .Default, handler: { (action) -> Void in
+            let cancel = UIAlertAction(title: "Cancel", style: .Destructive, handler: { (action) -> Void in
                 //print("Send now button tapped for value \(self.itemsToLoad[indexPath.row])")
+                self.tableView.setEditing(false, animated: true)
             })
             
             alertController.addAction(submit)
             alertController.addAction(cancel)
             
             self.navigationController!.presentViewController(alertController, animated: true, completion: nil)
+            
         }
         
         
     }
     
     
+    
+    
     func handleLogout(){
+        print("in 1")
         do{
             try Mydb.auth?.signOut()
         }catch let logoutError{
             print(logoutError)
         }
         
+        print("in 2")
         let loginController = LoginController()
         loginController.messagesController = nil
         Mydb = FirebaseHelper()
         presentViewController(loginController, animated: true, completion: nil)
+        settingsView.removeAll()
     }
     
     func fetchUserAndPopulate()
@@ -361,7 +470,9 @@ class SettingsController: UITableViewController {
                 self.status = (dictionary["status"] as? String)!
                 self.major = (dictionary["major"] as? String)!
                 self.userEmail = value
+                
                 self.populateSV()
+                
                 self.tableView.reloadData()
             }
             }, withCancelBlock: nil )

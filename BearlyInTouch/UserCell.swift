@@ -42,7 +42,13 @@ class UserCell : UITableViewCell {
                 
                 
                 if let dictionary = snapshot.value as? [String:AnyObject]{
-                    self.textLabel?.text = dictionary["email"] as? String
+                    
+                    if let navEmail = dictionary["email"] as? String{
+                        let index = navEmail.rangeOfString("@", options: .BackwardsSearch)?.startIndex
+                        let navEmail = navEmail.substringToIndex(index!)
+                        self.textLabel?.text = navEmail
+                    }
+                    
                     self.textLabel?.font = UIFont.boldSystemFontOfSize(16)
                 }
                 }, withCancelBlock: nil)

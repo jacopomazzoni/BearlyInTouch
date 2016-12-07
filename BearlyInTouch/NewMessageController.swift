@@ -57,6 +57,7 @@ class NewMessageController: UITableViewController {
         let user = users[indexPath.row]
         //let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellId)
         let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath)
+        
         cell.textLabel?.text = user.email
         cell.detailTextLabel?.text = user.email
         return cell

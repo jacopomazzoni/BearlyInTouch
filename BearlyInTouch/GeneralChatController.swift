@@ -35,6 +35,8 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
         collectionView?.backgroundColor = UIColor.whiteColor()
         collectionView?.registerClass(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         setupInputComponents()
+        generalMessages = [Message]()
+        
             }
     
     
