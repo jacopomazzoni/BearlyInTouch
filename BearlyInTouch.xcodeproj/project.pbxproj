@@ -31,13 +31,13 @@
 		9941593A1DF5133B005497A4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994159381DF5133B005497A4 /* UserCell.swift */; };
 		9941593B1DF5133B005497A4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994159381DF5133B005497A4 /* UserCell.swift */; };
 		BAB3F11C660CF12BCC5188EC /* Pods_BearlyInTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35699AEFFBCA78588F4D6900 /* Pods_BearlyInTouch.framework */; };
+		BF2FA1621DF820DB00CC086B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF2FA1611DF820DB00CC086B /* Assets.xcassets */; };
 		BF3330DB1DF54743003549DB /* ProfileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3330DA1DF54743003549DB /* ProfileImageCell.swift */; };
 		BF3330DD1DF54796003549DB /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3330DC1DF54796003549DB /* FirebaseHelper.swift */; };
 		BF461D251DE266E600DD42FF /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF461D241DE266E600DD42FF /* ChatLogController.swift */; };
 		BF5B99501DDA3400000F3416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B994F1DDA3400000F3416 /* AppDelegate.swift */; };
 		BF5B99521DDA3400000F3416 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B99511DDA3400000F3416 /* MessageController.swift */; };
 		BF5B99551DDA3400000F3416 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5B99531DDA3400000F3416 /* Main.storyboard */; };
-		BF5B99571DDA3400000F3416 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5B99561DDA3400000F3416 /* Assets.xcassets */; };
 		BF5B995A1DDA3400000F3416 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5B99581DDA3400000F3416 /* LaunchScreen.storyboard */; };
 		BF5B99651DDA3400000F3416 /* BearlyInTouchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B99641DDA3400000F3416 /* BearlyInTouchTests.swift */; };
 		BF5B99701DDA3400000F3416 /* BearlyInTouchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B996F1DDA3400000F3416 /* BearlyInTouchUITests.swift */; };
@@ -89,6 +89,7 @@
 		994159301DF51325005497A4 /* navExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = navExt.swift; sourceTree = "<group>"; };
 		994159341DF51333005497A4 /* UIImageExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExt.swift; sourceTree = "<group>"; };
 		994159381DF5133B005497A4 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		BF2FA1611DF820DB00CC086B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF3330DA1DF54743003549DB /* ProfileImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageCell.swift; sourceTree = "<group>"; };
 		BF3330DC1DF54796003549DB /* FirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		BF461D241DE266E600DD42FF /* ChatLogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
@@ -96,7 +97,6 @@
 		BF5B994F1DDA3400000F3416 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF5B99511DDA3400000F3416 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		BF5B99541DDA3400000F3416 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BF5B99561DDA3400000F3416 /* Assets.xcassets */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF5B99591DDA3400000F3416 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF5B995B1DDA3400000F3416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF5B99601DDA3400000F3416 /* BearlyInTouchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BearlyInTouchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,7 +224,7 @@
 				BFE275821DDCD0490080660A /* Model */,
 				BF5B994F1DDA3400000F3416 /* AppDelegate.swift */,
 				BF5B99531DDA3400000F3416 /* Main.storyboard */,
-				BF5B99561DDA3400000F3416 /* Assets.xcassets */,
+				BF2FA1611DF820DB00CC086B /* Assets.xcassets */,
 				BF5B99581DDA3400000F3416 /* LaunchScreen.storyboard */,
 				BFE3A4781DDA3C7800925F5C /* GoogleService-Info.plist */,
 				BF5B995B1DDA3400000F3416 /* Info.plist */,
@@ -376,8 +376,8 @@
 			files = (
 				BF5B995A1DDA3400000F3416 /* LaunchScreen.storyboard in Resources */,
 				BFE3A4791DDA3C7800925F5C /* GoogleService-Info.plist in Resources */,
-				BF5B99571DDA3400000F3416 /* Assets.xcassets in Resources */,
 				BF5B99551DDA3400000F3416 /* Main.storyboard in Resources */,
+				BF2FA1621DF820DB00CC086B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
