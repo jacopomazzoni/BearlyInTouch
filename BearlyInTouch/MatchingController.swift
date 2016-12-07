@@ -16,6 +16,9 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
     var isLiked = false
     var partner = ""
     var matchingString = ""
+    var messagesHandle = UInt?()
+    var uid = FIRAuth.auth()?.currentUser?.uid
+    
     var containerViewBottomAnchor: NSLayoutConstraint?
         var messages = [Message]()
 
@@ -35,7 +38,7 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
         }
         
         let userMessagesRef = FIRDatabase.database().reference().child("match-only-user-messages").child(uid)
-        userMessagesRef.observeEventType(.ChildAdded, withBlock: { (snapshot) in
+        self.messagesHandle = userMessagesRef.observeEventType(.ChildAdded, withBlock: { (snapshot) in
             
             let messageId = snapshot.key
             let messagesRef = FIRDatabase.database().reference().child("match-only-messages").child(messageId)
@@ -119,7 +122,9 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        
+        if let message = messagesHandle{
+            FIRDatabase.database().reference().child("match-only-user-messages").child(uid!).removeObserverWithHandle(message)
+        }
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     

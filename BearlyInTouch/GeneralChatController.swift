@@ -16,6 +16,8 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
     var generalMessages = [Message]()
     var containerViewBottomAnchor: NSLayoutConstraint?
     let cellId = "cellId"
+    var messageHandle = UInt?()
+    var ref = FIRDatabase.database()
     
     var user: User?{
         didSet{
@@ -36,14 +38,17 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
         collectionView?.registerClass(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         setupInputComponents()
         generalMessages = [Message]()
-        
             }
     
     
     override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        
+        //super.viewDidDisappear(animated)
+        generalMessages = [Message]()
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        if let handle = messageHandle {
+            FIRDatabase.database().reference().child("general").removeObserverWithHandle(handle)
+        }
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -93,7 +98,7 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
         let userMessagesRef = FIRDatabase.database().reference().child("general")
         
        
-        userMessagesRef.observeEventType(.ChildAdded, withBlock: { (snapshot) in
+         self.messageHandle = userMessagesRef.observeEventType(.ChildAdded, withBlock: { (snapshot) in
             
             let messageTime = snapshot.key
             let messagesRef = userMessagesRef.child(messageTime)
