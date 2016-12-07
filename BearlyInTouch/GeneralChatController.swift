@@ -29,7 +29,7 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
         super.viewDidLoad()
         
         self.navigationItem.title = "General"
-        collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 80, right: 0)
+        collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 80, right: 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
         collectionView?.alwaysBounceVertical = true
         collectionView?.backgroundColor = UIColor.whiteColor()
@@ -49,7 +49,6 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
     override func viewDidAppear(animated: Bool) {
         generalMessages = [Message]()
         observeMessages()
-
         setupKeyboardObservers()
         
         
@@ -96,8 +95,6 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
        
         userMessagesRef.observeEventType(.ChildAdded, withBlock: { (snapshot) in
             
-            print(snapshot)
-            
             let messageTime = snapshot.key
             let messagesRef = userMessagesRef.child(messageTime)
             messagesRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
@@ -112,7 +109,7 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
                 
                 
                 self.generalMessages.append(message)
-                print(self.generalMessages)
+                
                 dispatch_async(dispatch_get_main_queue(), {
                     self.collectionView?.reloadData()
                 })
@@ -160,11 +157,16 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
             cell.textView.textColor = UIColor.whiteColor()
             cell.bubbleRightAnchor?.active = true
             cell.bubbleLeftAnchor?.active = false
+            cell.userNameView.hidden = true
         }else{
             cell.bubbleView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
             cell.textView.textColor = UIColor.blackColor()
             cell.bubbleRightAnchor?.active = false
             cell.bubbleLeftAnchor?.active = true
+            cell.userNameView.hidden = false
+            let userName = message.fromId
+            let appendUser = userName?[(userName?.startIndex)!...(userName?.startIndex.advancedBy(3))!]
+            cell.userNameView.text = "\(appendUser!)**"
         }
     }
     
@@ -179,7 +181,7 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
         var height : CGFloat = 80
         
         if let text = generalMessages[indexPath.item].text{
-            height = estimatedFrameForText(text).height + 20
+            height = estimatedFrameForText(text).height + 22
         }
         
         return CGSize(width: view.frame.width, height: height)
@@ -238,6 +240,7 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
     }
     
     func handleSend(){
+        if !inputTextField.text!.isEmpty {
         let ref = FIRDatabase.database().reference().child("general")
         
         //let childRef = ref.childByAutoId()
@@ -260,6 +263,7 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
 //            
 //            let recipientUserMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId)
 //            recipientUserMessagesRef.updateChildValues([messageId:1])
+        }
         }
     }
     

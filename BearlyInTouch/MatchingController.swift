@@ -167,11 +167,13 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
     }
     
     private func setupCell(cell: ChatMessageCell, message: Message){
+        cell.userNameView.hidden = true
         if message.fromId == FIRAuth.auth()?.currentUser?.uid{
             cell.bubbleView.backgroundColor = ChatMessageCell.blueColor
             cell.textView.textColor = UIColor.whiteColor()
             cell.bubbleRightAnchor?.active = true
             cell.bubbleLeftAnchor?.active = false
+            
         }else{
             cell.bubbleView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
             cell.textView.textColor = UIColor.blackColor()

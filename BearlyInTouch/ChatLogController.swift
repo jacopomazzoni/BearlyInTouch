@@ -149,11 +149,13 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
             cell.textView.textColor = UIColor.whiteColor()
             cell.bubbleRightAnchor?.active = true
             cell.bubbleLeftAnchor?.active = false
+            cell.userNameView.hidden = true
         }else{
             cell.bubbleView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
             cell.textView.textColor = UIColor.blackColor()
             cell.bubbleRightAnchor?.active = false
             cell.bubbleLeftAnchor?.active = true
+            cell.userNameView.hidden = true
         }
     }
     
