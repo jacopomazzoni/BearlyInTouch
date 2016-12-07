@@ -42,6 +42,7 @@
 		BF5B99651DDA3400000F3416 /* BearlyInTouchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B99641DDA3400000F3416 /* BearlyInTouchTests.swift */; };
 		BF5B99701DDA3400000F3416 /* BearlyInTouchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B996F1DDA3400000F3416 /* BearlyInTouchUITests.swift */; };
 		BF90BD611DE1F7E800879614 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90BD601DE1F7E800879614 /* NewMessageController.swift */; };
+		BFD827741DF810840016B3A9 /* ChatInputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD827731DF810840016B3A9 /* ChatInputContainerView.swift */; };
 		BFD8F07F1DF7F476007563F1 /* tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD8F07E1DF7F476007563F1 /* tools.swift */; };
 		BFE275841DDCD05B0080660A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE275831DDCD05B0080660A /* User.swift */; };
 		BFE275851DDCD05B0080660A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE275831DDCD05B0080660A /* User.swift */; };
@@ -95,7 +96,7 @@
 		BF5B994F1DDA3400000F3416 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF5B99511DDA3400000F3416 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		BF5B99541DDA3400000F3416 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BF5B99561DDA3400000F3416 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF5B99561DDA3400000F3416 /* Assets.xcassets */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF5B99591DDA3400000F3416 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF5B995B1DDA3400000F3416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF5B99601DDA3400000F3416 /* BearlyInTouchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BearlyInTouchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +106,7 @@
 		BF5B996F1DDA3400000F3416 /* BearlyInTouchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearlyInTouchUITests.swift; sourceTree = "<group>"; };
 		BF5B99711DDA3400000F3416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF90BD601DE1F7E800879614 /* NewMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
+		BFD827731DF810840016B3A9 /* ChatInputContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInputContainerView.swift; sourceTree = "<group>"; };
 		BFD8F07E1DF7F476007563F1 /* tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tools.swift; sourceTree = "<group>"; };
 		BFE275831DDCD05B0080660A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BFE275871DDCD0640080660A /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				BFD8F07E1DF7F476007563F1 /* tools.swift */,
+				BFD827731DF810840016B3A9 /* ChatInputContainerView.swift */,
 				BFE275871DDCD0640080660A /* Message.swift */,
 				BFE275831DDCD05B0080660A /* User.swift */,
 			);
@@ -539,6 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFD827741DF810840016B3A9 /* ChatInputContainerView.swift in Sources */,
 				BF3330DD1DF54796003549DB /* FirebaseHelper.swift in Sources */,
 				994159241DF512B6005497A4 /* SettingsController.swift in Sources */,
 				994159391DF5133B005497A4 /* UserCell.swift in Sources */,

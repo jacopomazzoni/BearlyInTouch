@@ -13,6 +13,7 @@ import FirebaseDatabase
 
 class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout{
     
+    var containerView : ChatInputContainerView?
     var generalMessages = [Message]()
     var containerViewBottomAnchor: NSLayoutConstraint?
     let cellId = "cellId"
@@ -229,6 +230,7 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
     }
     
     func setupInputComponents(){
+        
         let containerView = UIView()
         containerView.backgroundColor = UIColor.whiteColor()
         containerView.translatesAutoresizingMaskIntoConstraints = false
