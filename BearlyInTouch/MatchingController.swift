@@ -263,24 +263,33 @@ class MatchingController: UICollectionViewController, UITextFieldDelegate, UICol
     func handleSend(){
         let ref = FIRDatabase.database().reference().child("match-only-messages")
         let childRef = ref.childByAutoId()
-        let toId = user!.id!
-        let fromId = FIRAuth.auth()!.currentUser!.uid
-        let timeStamp: NSNumber = Int(NSDate().timeIntervalSince1970)
-        let values = ["text": inputTextField.text!, "toId": toId, "fromId": fromId, "timeStamp": timeStamp]
-        childRef.updateChildValues(values){(error, ref) in
-            if error != nil{
-                print(error)
-                return
+        
+        // avoid crash if it doesn't have a match
+        if user != nil
+        {
+            let toId = user!.id!
+            let fromId = FIRAuth.auth()!.currentUser!.uid
+            let timeStamp: NSNumber = Int(NSDate().timeIntervalSince1970)
+            let values = ["text": inputTextField.text!, "toId": toId, "fromId": fromId, "timeStamp": timeStamp]
+            childRef.updateChildValues(values){(error, ref) in
+                if error != nil{
+                    print(error)
+                    return
+                }
+            
+                self.inputTextField.text = nil
+            
+                let userMessagesRef = FIRDatabase.database().reference().child("match-only-user-messages").child(fromId)
+                let messageId = childRef.key
+                userMessagesRef.updateChildValues([messageId: 1])
+            
+                let recipientUserMessagesRef = FIRDatabase.database().reference().child("match-only-user-messages").child(toId)
+                recipientUserMessagesRef.updateChildValues([messageId:1])
             }
-            
-            self.inputTextField.text = nil
-            
-            let userMessagesRef = FIRDatabase.database().reference().child("match-only-user-messages").child(fromId)
-            let messageId = childRef.key
-            userMessagesRef.updateChildValues([messageId: 1])
-            
-            let recipientUserMessagesRef = FIRDatabase.database().reference().child("match-only-user-messages").child(toId)
-            recipientUserMessagesRef.updateChildValues([messageId:1])
+        }
+        else
+        {
+            print("match not possible")
         }
     }
     

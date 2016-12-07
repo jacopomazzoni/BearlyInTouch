@@ -28,6 +28,16 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
     
     
     
+    func scrollToBottom() {
+        let indexpath = NSIndexPath(forItem: self.generalMessages.count-1, inSection: 0)
+        self.collectionView?.scrollToItemAtIndexPath(indexpath, atScrollPosition: UICollectionViewScrollPosition.Bottom, animated: true)
+    }
+    
+    func scrollToTop() {
+        let indexpath = NSIndexPath(forItem: self.generalMessages.count-1, inSection: 0)
+        self.collectionView?.scrollToItemAtIndexPath(indexpath, atScrollPosition: UICollectionViewScrollPosition.Top, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +49,8 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
         collectionView?.registerClass(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         setupInputComponents()
         generalMessages = [Message]()
+        print("before")
+        //scrollToBottom()
             }
     
     
@@ -73,13 +85,16 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
     }
+    
     func handleKeyboardWillShow(notification: NSNotification) {
         let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue()
         let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue
         
         
         containerViewBottomAnchor?.constant = -keyboardFrame!.height
-        
+        if generalMessages.count > 0 {
+            scrollToTop()
+        }
         UIView.animateWithDuration(keyboardDuration!){
             self.view.layoutIfNeeded()
         }
@@ -124,6 +139,8 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
                 
                 dispatch_async(dispatch_get_main_queue(), {
                     self.collectionView?.reloadData()
+                    // Scroll to the last cell
+                    self.scrollToBottom()
                 })
                 
                 }, withCancelBlock: nil)
@@ -153,7 +170,7 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
         
         let message = generalMessages[indexPath.item]
         cell.textView.text = message.text
-        
+        cell.textView.editable = false
         setupCell(cell, message: message)
         
         //modify the bubbleView's width
@@ -171,14 +188,15 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
             cell.bubbleLeftAnchor?.active = false
             cell.userNameView.hidden = true
         }else{
-            cell.bubbleView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+            //cell.bubbleView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
             cell.textView.textColor = UIColor.blackColor()
             cell.bubbleRightAnchor?.active = false
             cell.bubbleLeftAnchor?.active = true
-            cell.userNameView.hidden = false
+            cell.userNameView.hidden = true
             let userName = message.fromId
             let appendUser = userName?[(userName?.startIndex)!...(userName?.startIndex.advancedBy(3))!]
-            cell.userNameView.text = "\(appendUser!)**"
+            cell.bubbleView.backgroundColor = tools.idToColor(appendUser!)
+            //cell.userNameView.text = "\(appendUser!)**"
         }
     }
     
