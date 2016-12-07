@@ -21,6 +21,18 @@ class ChatMessageCell: UICollectionViewCell {
         return tv
     }()
     
+    let userNameView: UILabel = {
+        let tv = UILabel()
+        tv.text = "Sample"
+        tv.font = UIFont.systemFontOfSize(11)
+        //tv.font = UIFont.boldSystemFontOfSize(10)
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.backgroundColor = UIColor.clearColor()
+        tv.textColor = UIColor.grayColor()
+        
+        return tv
+    }()
+    
     static let blueColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 0.6)
     
     let bubbleView: UIView = {
@@ -43,6 +55,9 @@ class ChatMessageCell: UICollectionViewCell {
         
         addSubview(bubbleView)
         addSubview(textView)
+        addSubview(userNameView)
+        
+   
         
         bubbleRightAnchor = bubbleView.rightAnchor.constraintEqualToAnchor(self.rightAnchor, constant: -8)
         
@@ -59,11 +74,15 @@ class ChatMessageCell: UICollectionViewCell {
         
         textView.leftAnchor.constraintEqualToAnchor(bubbleView.leftAnchor, constant: 8).active = true
         textView.topAnchor.constraintEqualToAnchor(self.topAnchor).active = true
-        //textView.widthAnchor.constraintEqualToConstant(200).active = true
-        
         textView.rightAnchor.constraintEqualToAnchor(bubbleView.rightAnchor).active = true
-        
         textView.heightAnchor.constraintEqualToAnchor(self.heightAnchor).active = true
+        
+        
+        userNameView.leftAnchor.constraintEqualToAnchor(bubbleView.rightAnchor, constant: 2).active = true
+        
+        //userNameView.topAnchor.constraintEqualToAnchor(bubbleView.bottomAnchor).active = true
+        userNameView.bottomAnchor.constraintEqualToAnchor(bubbleView.bottomAnchor , constant: 8 ).active = true
+        userNameView.heightAnchor.constraintEqualToAnchor(self.heightAnchor).active = true
         
     }
     
