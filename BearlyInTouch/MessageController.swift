@@ -35,6 +35,7 @@ class MessageController: UITableViewController {
         //handling the user not logged in
         checkIfUserIsLoggedIn()
         
+        self.navigationItem.title = "Messages"
         tableView.registerClass(UserCell.self, forCellReuseIdentifier: cellId)
         
         
@@ -199,7 +200,7 @@ class MessageController: UITableViewController {
                 if let navEmail = dictionary["email"] as? String{
                     let index = navEmail.rangeOfString("@", options: .BackwardsSearch)?.startIndex
                     let navEmail = navEmail.substringToIndex(index!)
-                    self.navigationItem.title = "Messages"//navEmail
+                    //navEmail
                     
 //                    if let idx = navEmail.characters.indexOf("@") {
 //                        let pos = navEmail.startIndex.distanceTo(idx)
