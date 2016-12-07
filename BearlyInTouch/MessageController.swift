@@ -30,7 +30,7 @@ class MessageController: UITableViewController {
 
         // Add Logout button to navbar
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(handleLogout))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: #selector(handleNewMessage))
+        //navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: #selector(handleNewMessage))
         
         //handling the user not logged in
         checkIfUserIsLoggedIn()
@@ -199,7 +199,7 @@ class MessageController: UITableViewController {
                 if let navEmail = dictionary["email"] as? String{
                     let index = navEmail.rangeOfString("@", options: .BackwardsSearch)?.startIndex
                     let navEmail = navEmail.substringToIndex(index!)
-                    self.navigationItem.title = navEmail
+                    self.navigationItem.title = "Messages"//navEmail
                     
 //                    if let idx = navEmail.characters.indexOf("@") {
 //                        let pos = navEmail.startIndex.distanceTo(idx)
