@@ -18,6 +18,7 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
     let cellId = "cellId"
     var messageHandle = UInt?()
     var ref = FIRDatabase.database()
+    let userMessagesRef = FIRDatabase.database().reference().child("general")
     
     var user: User?{
         didSet{
@@ -43,19 +44,25 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
     
     override func viewDidDisappear(animated: Bool) {
         //super.viewDidDisappear(animated)
-        generalMessages = [Message]()
+        
         NSNotificationCenter.defaultCenter().removeObserver(self)
         if let handle = messageHandle {
-            FIRDatabase.database().reference().child("general").removeObserverWithHandle(handle)
+            userMessagesRef.removeObserverWithHandle(handle)
         }
+        generalMessages = [Message]()
         
     }
     
     override func viewDidAppear(animated: Bool) {
+        
         generalMessages = [Message]()
         observeMessages()
         setupKeyboardObservers()
-        
+//        let contentSize = self.collectionView?.collectionViewLayout.collectionViewContentSize()
+//        if(contentSize?.height > self.collectionView?.bounds.size.height){
+//            let target = CGPointMake(0.0, (contentSize?.height)!-(self.collectionView?.bounds.size.height)!)
+//            self.collectionView?.setContentOffset(target, animated: true)
+//        }
         
     }
     
@@ -95,8 +102,8 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
             return
         }
         
-        let userMessagesRef = FIRDatabase.database().reference().child("general")
-        
+
+        let userMessagesRef = self.userMessagesRef
        
          self.messageHandle = userMessagesRef.observeEventType(.ChildAdded, withBlock: { (snapshot) in
             
@@ -175,6 +182,10 @@ class GeneralChatController: UICollectionViewController, UITextFieldDelegate, UI
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         collectionView?.collectionViewLayout.invalidateLayout()

@@ -44,7 +44,7 @@ class MessageController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(false)
-        //viewDidLoad()
+        viewDidLoad()
     }
     
     

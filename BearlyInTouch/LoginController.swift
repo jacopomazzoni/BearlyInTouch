@@ -58,6 +58,13 @@ class LoginController: UIViewController {
             print("Form is not valid")
             return
         }
+        let index = email.rangeOfString("@", options: .BackwardsSearch)?.startIndex
+        let emailAddress = email.substringFromIndex(index!)//substringToIndex(index!)
+        print(emailAddress)
+        if(emailAddress != "@wustl.edu"){
+            showAlert("Not a Wustl email!")
+            return
+        }
         FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: {( user:FIRUser?,error) in
             
             if error != nil{
